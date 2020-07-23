@@ -102,7 +102,7 @@ Examples can be found [here](/Examples).
 
 Building the SDK can be done at the root of the whole solution or at individual project level under it.
 
-#install the :.Net Core 3.1 runtime -> https://dotnet.microsoft.com/download/dotnet-core/3.1
+install the :.Net Core 3.1 runtime -> https://dotnet.microsoft.com/download/dotnet-core/3.1
 
 At the root level, to build the whole solution, run with dotnet cli command:
 
