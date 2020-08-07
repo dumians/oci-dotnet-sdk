@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\General.targets" />
   <PropertyGroup>
     <OutputType>Library</OutputType>
@@ -10,14 +10,20 @@
     <Authors>Oracle Cloud Infrastructure</Authors>
     <Company>Oracle</Company>
     <PackageTags>Oracle;OCI;Cloud;oci-sdk;OracleCloudInfrastructure</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://docs.cloud.oracle.com/en-us/iaas/Content/API/SDKDocs/dotnetsdk.htm</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/oracle/oci-dotnet-sdk</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="NLog" Version="4.7.2"/>
-    <PackageReference Include="Portable.BouncyCastle" Version="1.8.6.7"/>
-    <PackageReference Include="Polly" Version="7.2.0"/>
-    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0"/>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3"/>
-    <PackageReference Include="Microsoft.CSharp" Version="4.7.0"/>
+    <Compile Include="..\CommonAssemblyInfo.cs" Link="Src\CommonAssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NLog" Version="4.7.3" />
+    <PackageReference Include="Polly" Version="7.2.1" />
+    <PackageReference Include="Portable.BouncyCastle" Version="1.8.6.7" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\NLog.config">
