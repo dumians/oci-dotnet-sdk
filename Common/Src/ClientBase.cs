@@ -14,8 +14,9 @@ using Oci.Common.Http.Signing;
 namespace Oci.Common
 {
     /// <summary>An abstract class for a generic service client.</summary>
-    public abstract class ClientBase
+    public abstract class ClientBase : IDisposable
     {
+        bool disposed = false;
         private readonly Dictionary<SigningStrategy, RequestSigner> availableRequestSigners;
         private readonly RequestSigner requestSigner;
 
@@ -42,7 +43,7 @@ namespace Oci.Common
         /// <param name="authProvider">The authentication details provider.</param>
         /// <param name="clientConfiguration">A client configuration to customize client.</param>
         public ClientBase(IBasicAuthenticationDetailsProvider authProvider, ClientConfiguration clientConfiguration) :
-            this(authProvider, new ClientConfiguration(), new DefaultRequestSigner(authProvider))
+            this(authProvider, clientConfiguration, new DefaultRequestSigner(authProvider))
         { }
 
         /// <summary> Constructor of a service client.</summary>
@@ -51,17 +52,33 @@ namespace Oci.Common
         /// <param name="requestSigner">A request signer that will be used to sign requests.</param>
         public ClientBase(IBasicAuthenticationDetailsProvider authProvider, ClientConfiguration clientConfiguration, RequestSigner requestSigner)
         {
+            ClientConfiguration clientConfigurationToUse = clientConfiguration ?? new ClientConfiguration();
             this.clientHandler = new RestClientHandler(RequestReceptor);
-            this.restClient = new RestClient(clientHandler, clientConfiguration);
+            this.restClient = new RestClient(clientHandler, clientConfigurationToUse);
             this.requestSigner = requestSigner;
             this.availableRequestSigners = GetAvailableRequestSigners(authProvider);
-            this.restClient.SetDefaultUserAgent(GetUserAgent(clientConfiguration.ClientUserAgent));
+            this.restClient.SetDefaultUserAgent(GetUserAgent(clientConfigurationToUse.ClientUserAgent));
         }
 
         /// <summary>Disposes the rest client.</summary>
         public void Dispose()
         {
-            this.restClient.Dispose();
+            Dispose(true);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed == true)
+            {
+                return;
+            }
+            if (disposing)
+            {
+                logger.Info("Disposing rest client.");
+                this.restClient.Dispose();
+                GC.SuppressFinalize(this);
+            }
+            disposed = true;
         }
 
         /// <summary>Sets the endpoint in the rest client.</summary>

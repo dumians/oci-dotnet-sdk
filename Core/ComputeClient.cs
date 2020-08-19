@@ -92,6 +92,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<AddImageShapeCompatibilityEntryResponse>(responseMessage);
             }
@@ -130,6 +131,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<AttachBootVolumeResponse>(responseMessage);
             }
@@ -170,6 +172,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<AttachVnicResponse>(responseMessage);
             }
@@ -208,6 +211,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<AttachVolumeResponse>(responseMessage);
             }
@@ -262,12 +266,54 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<CaptureConsoleHistoryResponse>(responseMessage);
             }
             catch (Exception e)
             {
                 logger.Error($"CaptureConsoleHistory failed with error: {e.Message}");
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Moves a compute image capability schema into a different compartment within the same tenancy.
+        /// For information about moving resources between compartments, see
+        ///         [Moving Resources to a Different Compartment](https://docs.cloud.oracle.com/iaas/Content/Identity/Tasks/managingcompartments.htm#moveRes).
+        /// 
+        /// </summary>
+        /// <param name="request">The request object containing the details to send. Required.</param>
+        /// <param name="retryConfiguration">The retry configuration that will be used by to send this request. Optional.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel this operation. Optional.</param>
+        /// <returns>A response object containing details about the completed operation</returns>
+        public async Task<ChangeComputeImageCapabilitySchemaCompartmentResponse> ChangeComputeImageCapabilitySchemaCompartment(ChangeComputeImageCapabilitySchemaCompartmentRequest request, RetryConfiguration retryConfiguration = null, CancellationToken cancellationToken = default)
+        {
+            logger.Trace("Called changeComputeImageCapabilitySchemaCompartment");
+            Uri uri = new Uri(this.restClient.GetEndpoint(), System.IO.Path.Combine(basePathWithoutHost, "/computeImageCapabilitySchemas/{computeImageCapabilitySchemaId}/actions/changeCompartment".Trim('/')));
+            HttpMethod method = new HttpMethod("Post");
+            HttpRequestMessage requestMessage = Converter.ToHttpRequestMessage(uri, method, request);
+            requestMessage.Headers.Add("Accept", "application/json");
+            GenericRetrier retryingClient = Retrier.GetPreferredRetrier(retryConfiguration, this.retryConfiguration);
+            HttpResponseMessage responseMessage;
+
+            try
+            {
+                if (retryingClient != null)
+                {
+                    responseMessage = await retryingClient.MakeRetryingCall(this.restClient.HttpSend, requestMessage, cancellationToken);
+                }
+                else
+                {
+                    responseMessage = await this.restClient.HttpSend(requestMessage);
+                }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
+
+                return Converter.FromHttpResponseMessage<ChangeComputeImageCapabilitySchemaCompartmentResponse>(responseMessage);
+            }
+            catch (Exception e)
+            {
+                logger.Error($"ChangeComputeImageCapabilitySchemaCompartment failed with error: {e.Message}");
                 throw;
             }
         }
@@ -299,6 +345,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<ChangeDedicatedVmHostCompartmentResponse>(responseMessage);
             }
@@ -339,6 +386,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<ChangeImageCompartmentResponse>(responseMessage);
             }
@@ -382,6 +430,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<ChangeInstanceCompartmentResponse>(responseMessage);
             }
@@ -420,12 +469,52 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<CreateAppCatalogSubscriptionResponse>(responseMessage);
             }
             catch (Exception e)
             {
                 logger.Error($"CreateAppCatalogSubscription failed with error: {e.Message}");
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Creates compute image capability schema.
+        /// 
+        /// </summary>
+        /// <param name="request">The request object containing the details to send. Required.</param>
+        /// <param name="retryConfiguration">The retry configuration that will be used by to send this request. Optional.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel this operation. Optional.</param>
+        /// <returns>A response object containing details about the completed operation</returns>
+        public async Task<CreateComputeImageCapabilitySchemaResponse> CreateComputeImageCapabilitySchema(CreateComputeImageCapabilitySchemaRequest request, RetryConfiguration retryConfiguration = null, CancellationToken cancellationToken = default)
+        {
+            logger.Trace("Called createComputeImageCapabilitySchema");
+            Uri uri = new Uri(this.restClient.GetEndpoint(), System.IO.Path.Combine(basePathWithoutHost, "/computeImageCapabilitySchemas".Trim('/')));
+            HttpMethod method = new HttpMethod("Post");
+            HttpRequestMessage requestMessage = Converter.ToHttpRequestMessage(uri, method, request);
+            requestMessage.Headers.Add("Accept", "application/json");
+            GenericRetrier retryingClient = Retrier.GetPreferredRetrier(retryConfiguration, this.retryConfiguration);
+            HttpResponseMessage responseMessage;
+
+            try
+            {
+                if (retryingClient != null)
+                {
+                    responseMessage = await retryingClient.MakeRetryingCall(this.restClient.HttpSend, requestMessage, cancellationToken);
+                }
+                else
+                {
+                    responseMessage = await this.restClient.HttpSend(requestMessage);
+                }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
+
+                return Converter.FromHttpResponseMessage<CreateComputeImageCapabilitySchemaResponse>(responseMessage);
+            }
+            catch (Exception e)
+            {
+                logger.Error($"CreateComputeImageCapabilitySchema failed with error: {e.Message}");
                 throw;
             }
         }
@@ -461,6 +550,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<CreateDedicatedVmHostResponse>(responseMessage);
             }
@@ -521,6 +611,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<CreateImageResponse>(responseMessage);
             }
@@ -563,6 +654,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<CreateInstanceConsoleConnectionResponse>(responseMessage);
             }
@@ -600,12 +692,52 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<DeleteAppCatalogSubscriptionResponse>(responseMessage);
             }
             catch (Exception e)
             {
                 logger.Error($"DeleteAppCatalogSubscription failed with error: {e.Message}");
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Deletes the specified Compute Image Capability Schema
+        /// 
+        /// </summary>
+        /// <param name="request">The request object containing the details to send. Required.</param>
+        /// <param name="retryConfiguration">The retry configuration that will be used by to send this request. Optional.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel this operation. Optional.</param>
+        /// <returns>A response object containing details about the completed operation</returns>
+        public async Task<DeleteComputeImageCapabilitySchemaResponse> DeleteComputeImageCapabilitySchema(DeleteComputeImageCapabilitySchemaRequest request, RetryConfiguration retryConfiguration = null, CancellationToken cancellationToken = default)
+        {
+            logger.Trace("Called deleteComputeImageCapabilitySchema");
+            Uri uri = new Uri(this.restClient.GetEndpoint(), System.IO.Path.Combine(basePathWithoutHost, "/computeImageCapabilitySchemas/{computeImageCapabilitySchemaId}".Trim('/')));
+            HttpMethod method = new HttpMethod("Delete");
+            HttpRequestMessage requestMessage = Converter.ToHttpRequestMessage(uri, method, request);
+            requestMessage.Headers.Add("Accept", "application/json");
+            GenericRetrier retryingClient = Retrier.GetPreferredRetrier(retryConfiguration, this.retryConfiguration);
+            HttpResponseMessage responseMessage;
+
+            try
+            {
+                if (retryingClient != null)
+                {
+                    responseMessage = await retryingClient.MakeRetryingCall(this.restClient.HttpSend, requestMessage, cancellationToken);
+                }
+                else
+                {
+                    responseMessage = await this.restClient.HttpSend(requestMessage);
+                }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
+
+                return Converter.FromHttpResponseMessage<DeleteComputeImageCapabilitySchemaResponse>(responseMessage);
+            }
+            catch (Exception e)
+            {
+                logger.Error($"DeleteComputeImageCapabilitySchema failed with error: {e.Message}");
                 throw;
             }
         }
@@ -637,6 +769,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<DeleteConsoleHistoryResponse>(responseMessage);
             }
@@ -678,6 +811,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<DeleteDedicatedVmHostResponse>(responseMessage);
             }
@@ -715,6 +849,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<DeleteImageResponse>(responseMessage);
             }
@@ -752,6 +887,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<DeleteInstanceConsoleConnectionResponse>(responseMessage);
             }
@@ -793,6 +929,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<DetachBootVolumeResponse>(responseMessage);
             }
@@ -840,6 +977,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<DetachVnicResponse>(responseMessage);
             }
@@ -881,6 +1019,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<DetachVolumeResponse>(responseMessage);
             }
@@ -928,6 +1067,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<ExportImageResponse>(responseMessage);
             }
@@ -965,6 +1105,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<GetAppCatalogListingResponse>(responseMessage);
             }
@@ -1002,6 +1143,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<GetAppCatalogListingAgreementsResponse>(responseMessage);
             }
@@ -1039,6 +1181,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<GetAppCatalogListingResourceVersionResponse>(responseMessage);
             }
@@ -1076,12 +1219,128 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<GetBootVolumeAttachmentResponse>(responseMessage);
             }
             catch (Exception e)
             {
                 logger.Error($"GetBootVolumeAttachment failed with error: {e.Message}");
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Gets the specified Compute Global Image Capability Schema
+        /// </summary>
+        /// <param name="request">The request object containing the details to send. Required.</param>
+        /// <param name="retryConfiguration">The retry configuration that will be used by to send this request. Optional.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel this operation. Optional.</param>
+        /// <returns>A response object containing details about the completed operation</returns>
+        public async Task<GetComputeGlobalImageCapabilitySchemaResponse> GetComputeGlobalImageCapabilitySchema(GetComputeGlobalImageCapabilitySchemaRequest request, RetryConfiguration retryConfiguration = null, CancellationToken cancellationToken = default)
+        {
+            logger.Trace("Called getComputeGlobalImageCapabilitySchema");
+            Uri uri = new Uri(this.restClient.GetEndpoint(), System.IO.Path.Combine(basePathWithoutHost, "/computeGlobalImageCapabilitySchemas/{computeGlobalImageCapabilitySchemaId}".Trim('/')));
+            HttpMethod method = new HttpMethod("Get");
+            HttpRequestMessage requestMessage = Converter.ToHttpRequestMessage(uri, method, request);
+            requestMessage.Headers.Add("Accept", "application/json");
+            GenericRetrier retryingClient = Retrier.GetPreferredRetrier(retryConfiguration, this.retryConfiguration);
+            HttpResponseMessage responseMessage;
+
+            try
+            {
+                if (retryingClient != null)
+                {
+                    responseMessage = await retryingClient.MakeRetryingCall(this.restClient.HttpSend, requestMessage, cancellationToken);
+                }
+                else
+                {
+                    responseMessage = await this.restClient.HttpSend(requestMessage);
+                }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
+
+                return Converter.FromHttpResponseMessage<GetComputeGlobalImageCapabilitySchemaResponse>(responseMessage);
+            }
+            catch (Exception e)
+            {
+                logger.Error($"GetComputeGlobalImageCapabilitySchema failed with error: {e.Message}");
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Gets the specified Compute Global Image Capability Schema Version
+        /// </summary>
+        /// <param name="request">The request object containing the details to send. Required.</param>
+        /// <param name="retryConfiguration">The retry configuration that will be used by to send this request. Optional.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel this operation. Optional.</param>
+        /// <returns>A response object containing details about the completed operation</returns>
+        public async Task<GetComputeGlobalImageCapabilitySchemaVersionResponse> GetComputeGlobalImageCapabilitySchemaVersion(GetComputeGlobalImageCapabilitySchemaVersionRequest request, RetryConfiguration retryConfiguration = null, CancellationToken cancellationToken = default)
+        {
+            logger.Trace("Called getComputeGlobalImageCapabilitySchemaVersion");
+            Uri uri = new Uri(this.restClient.GetEndpoint(), System.IO.Path.Combine(basePathWithoutHost, "/computeGlobalImageCapabilitySchemas/{computeGlobalImageCapabilitySchemaId}/versions/{computeGlobalImageCapabilitySchemaVersionName}".Trim('/')));
+            HttpMethod method = new HttpMethod("Get");
+            HttpRequestMessage requestMessage = Converter.ToHttpRequestMessage(uri, method, request);
+            requestMessage.Headers.Add("Accept", "application/json");
+            GenericRetrier retryingClient = Retrier.GetPreferredRetrier(retryConfiguration, this.retryConfiguration);
+            HttpResponseMessage responseMessage;
+
+            try
+            {
+                if (retryingClient != null)
+                {
+                    responseMessage = await retryingClient.MakeRetryingCall(this.restClient.HttpSend, requestMessage, cancellationToken);
+                }
+                else
+                {
+                    responseMessage = await this.restClient.HttpSend(requestMessage);
+                }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
+
+                return Converter.FromHttpResponseMessage<GetComputeGlobalImageCapabilitySchemaVersionResponse>(responseMessage);
+            }
+            catch (Exception e)
+            {
+                logger.Error($"GetComputeGlobalImageCapabilitySchemaVersion failed with error: {e.Message}");
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Gets the specified Compute Image Capability Schema
+        /// 
+        /// </summary>
+        /// <param name="request">The request object containing the details to send. Required.</param>
+        /// <param name="retryConfiguration">The retry configuration that will be used by to send this request. Optional.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel this operation. Optional.</param>
+        /// <returns>A response object containing details about the completed operation</returns>
+        public async Task<GetComputeImageCapabilitySchemaResponse> GetComputeImageCapabilitySchema(GetComputeImageCapabilitySchemaRequest request, RetryConfiguration retryConfiguration = null, CancellationToken cancellationToken = default)
+        {
+            logger.Trace("Called getComputeImageCapabilitySchema");
+            Uri uri = new Uri(this.restClient.GetEndpoint(), System.IO.Path.Combine(basePathWithoutHost, "/computeImageCapabilitySchemas/{computeImageCapabilitySchemaId}".Trim('/')));
+            HttpMethod method = new HttpMethod("Get");
+            HttpRequestMessage requestMessage = Converter.ToHttpRequestMessage(uri, method, request);
+            requestMessage.Headers.Add("Accept", "application/json");
+            GenericRetrier retryingClient = Retrier.GetPreferredRetrier(retryConfiguration, this.retryConfiguration);
+            HttpResponseMessage responseMessage;
+
+            try
+            {
+                if (retryingClient != null)
+                {
+                    responseMessage = await retryingClient.MakeRetryingCall(this.restClient.HttpSend, requestMessage, cancellationToken);
+                }
+                else
+                {
+                    responseMessage = await this.restClient.HttpSend(requestMessage);
+                }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
+
+                return Converter.FromHttpResponseMessage<GetComputeImageCapabilitySchemaResponse>(responseMessage);
+            }
+            catch (Exception e)
+            {
+                logger.Error($"GetComputeImageCapabilitySchema failed with error: {e.Message}");
                 throw;
             }
         }
@@ -1116,6 +1375,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<GetConsoleHistoryResponse>(responseMessage);
             }
@@ -1156,6 +1416,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<GetConsoleHistoryContentResponse>(responseMessage);
             }
@@ -1193,6 +1454,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<GetDedicatedVmHostResponse>(responseMessage);
             }
@@ -1230,6 +1492,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<GetImageResponse>(responseMessage);
             }
@@ -1267,6 +1530,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<GetImageShapeCompatibilityEntryResponse>(responseMessage);
             }
@@ -1304,6 +1568,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<GetInstanceResponse>(responseMessage);
             }
@@ -1341,6 +1606,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<GetInstanceConsoleConnectionResponse>(responseMessage);
             }
@@ -1379,6 +1645,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<GetVnicAttachmentResponse>(responseMessage);
             }
@@ -1416,6 +1683,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<GetVolumeAttachmentResponse>(responseMessage);
             }
@@ -1455,6 +1723,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<GetWindowsInstanceInitialCredentialsResponse>(responseMessage);
             }
@@ -1509,6 +1778,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<InstanceActionResponse>(responseMessage);
             }
@@ -1551,6 +1821,14 @@ namespace Oci.CoreService
         /// &lt;br/&gt;
         /// You can later add secondary VNICs to an instance. For more information, see
         /// [Virtual Network Interface Cards (VNICs)](https://docs.cloud.oracle.com/Content/Network/Tasks/managingVNICs.htm).
+        /// &lt;br/&gt;
+        /// To launch an instance from a Marketplace image listing, you must provide the image ID of the
+        /// listing resource version that you want, but you also must subscribe to the listing before you try
+        /// to launch the instance. To subscribe to the listing, use the {@link #getAppCatalogListingAgreements(GetAppCatalogListingAgreementsRequest) getAppCatalogListingAgreements}
+        /// operation to get the signature for the terms of use agreement for the desired listing resource version.
+        /// Then, call {@link #createAppCatalogSubscription(CreateAppCatalogSubscriptionRequest) createAppCatalogSubscription}
+        /// with the signature. To get the image ID for the LaunchInstance operation, call
+        /// {@link #getAppCatalogListingResourceVersion(GetAppCatalogListingResourceVersionRequest) getAppCatalogListingResourceVersion}.
         /// 
         /// </summary>
         /// <param name="request">The request object containing the details to send. Required.</param>
@@ -1577,6 +1855,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<LaunchInstanceResponse>(responseMessage);
             }
@@ -1614,6 +1893,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<ListAppCatalogListingResourceVersionsResponse>(responseMessage);
             }
@@ -1651,6 +1931,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<ListAppCatalogListingsResponse>(responseMessage);
             }
@@ -1688,6 +1969,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<ListAppCatalogSubscriptionsResponse>(responseMessage);
             }
@@ -1727,12 +2009,130 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<ListBootVolumeAttachmentsResponse>(responseMessage);
             }
             catch (Exception e)
             {
                 logger.Error($"ListBootVolumeAttachments failed with error: {e.Message}");
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Lists Compute Global Image Capability Schema versions in the specified compartment.
+        /// 
+        /// </summary>
+        /// <param name="request">The request object containing the details to send. Required.</param>
+        /// <param name="retryConfiguration">The retry configuration that will be used by to send this request. Optional.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel this operation. Optional.</param>
+        /// <returns>A response object containing details about the completed operation</returns>
+        public async Task<ListComputeGlobalImageCapabilitySchemaVersionsResponse> ListComputeGlobalImageCapabilitySchemaVersions(ListComputeGlobalImageCapabilitySchemaVersionsRequest request, RetryConfiguration retryConfiguration = null, CancellationToken cancellationToken = default)
+        {
+            logger.Trace("Called listComputeGlobalImageCapabilitySchemaVersions");
+            Uri uri = new Uri(this.restClient.GetEndpoint(), System.IO.Path.Combine(basePathWithoutHost, "/computeGlobalImageCapabilitySchemas/{computeGlobalImageCapabilitySchemaId}/versions".Trim('/')));
+            HttpMethod method = new HttpMethod("Get");
+            HttpRequestMessage requestMessage = Converter.ToHttpRequestMessage(uri, method, request);
+            requestMessage.Headers.Add("Accept", "application/json");
+            GenericRetrier retryingClient = Retrier.GetPreferredRetrier(retryConfiguration, this.retryConfiguration);
+            HttpResponseMessage responseMessage;
+
+            try
+            {
+                if (retryingClient != null)
+                {
+                    responseMessage = await retryingClient.MakeRetryingCall(this.restClient.HttpSend, requestMessage, cancellationToken);
+                }
+                else
+                {
+                    responseMessage = await this.restClient.HttpSend(requestMessage);
+                }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
+
+                return Converter.FromHttpResponseMessage<ListComputeGlobalImageCapabilitySchemaVersionsResponse>(responseMessage);
+            }
+            catch (Exception e)
+            {
+                logger.Error($"ListComputeGlobalImageCapabilitySchemaVersions failed with error: {e.Message}");
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Lists Compute Global Image Capability Schema in the specified compartment.
+        /// 
+        /// </summary>
+        /// <param name="request">The request object containing the details to send. Required.</param>
+        /// <param name="retryConfiguration">The retry configuration that will be used by to send this request. Optional.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel this operation. Optional.</param>
+        /// <returns>A response object containing details about the completed operation</returns>
+        public async Task<ListComputeGlobalImageCapabilitySchemasResponse> ListComputeGlobalImageCapabilitySchemas(ListComputeGlobalImageCapabilitySchemasRequest request, RetryConfiguration retryConfiguration = null, CancellationToken cancellationToken = default)
+        {
+            logger.Trace("Called listComputeGlobalImageCapabilitySchemas");
+            Uri uri = new Uri(this.restClient.GetEndpoint(), System.IO.Path.Combine(basePathWithoutHost, "/computeGlobalImageCapabilitySchemas".Trim('/')));
+            HttpMethod method = new HttpMethod("Get");
+            HttpRequestMessage requestMessage = Converter.ToHttpRequestMessage(uri, method, request);
+            requestMessage.Headers.Add("Accept", "application/json");
+            GenericRetrier retryingClient = Retrier.GetPreferredRetrier(retryConfiguration, this.retryConfiguration);
+            HttpResponseMessage responseMessage;
+
+            try
+            {
+                if (retryingClient != null)
+                {
+                    responseMessage = await retryingClient.MakeRetryingCall(this.restClient.HttpSend, requestMessage, cancellationToken);
+                }
+                else
+                {
+                    responseMessage = await this.restClient.HttpSend(requestMessage);
+                }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
+
+                return Converter.FromHttpResponseMessage<ListComputeGlobalImageCapabilitySchemasResponse>(responseMessage);
+            }
+            catch (Exception e)
+            {
+                logger.Error($"ListComputeGlobalImageCapabilitySchemas failed with error: {e.Message}");
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Lists Compute Image Capability Schema in the specified compartment. You can also query by a specific imageId.
+        /// 
+        /// </summary>
+        /// <param name="request">The request object containing the details to send. Required.</param>
+        /// <param name="retryConfiguration">The retry configuration that will be used by to send this request. Optional.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel this operation. Optional.</param>
+        /// <returns>A response object containing details about the completed operation</returns>
+        public async Task<ListComputeImageCapabilitySchemasResponse> ListComputeImageCapabilitySchemas(ListComputeImageCapabilitySchemasRequest request, RetryConfiguration retryConfiguration = null, CancellationToken cancellationToken = default)
+        {
+            logger.Trace("Called listComputeImageCapabilitySchemas");
+            Uri uri = new Uri(this.restClient.GetEndpoint(), System.IO.Path.Combine(basePathWithoutHost, "/computeImageCapabilitySchemas".Trim('/')));
+            HttpMethod method = new HttpMethod("Get");
+            HttpRequestMessage requestMessage = Converter.ToHttpRequestMessage(uri, method, request);
+            requestMessage.Headers.Add("Accept", "application/json");
+            GenericRetrier retryingClient = Retrier.GetPreferredRetrier(retryConfiguration, this.retryConfiguration);
+            HttpResponseMessage responseMessage;
+
+            try
+            {
+                if (retryingClient != null)
+                {
+                    responseMessage = await retryingClient.MakeRetryingCall(this.restClient.HttpSend, requestMessage, cancellationToken);
+                }
+                else
+                {
+                    responseMessage = await this.restClient.HttpSend(requestMessage);
+                }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
+
+                return Converter.FromHttpResponseMessage<ListComputeImageCapabilitySchemasResponse>(responseMessage);
+            }
+            catch (Exception e)
+            {
+                logger.Error($"ListComputeImageCapabilitySchemas failed with error: {e.Message}");
                 throw;
             }
         }
@@ -1765,6 +2165,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<ListConsoleHistoriesResponse>(responseMessage);
             }
@@ -1804,6 +2205,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<ListDedicatedVmHostInstanceShapesResponse>(responseMessage);
             }
@@ -1842,6 +2244,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<ListDedicatedVmHostInstancesResponse>(responseMessage);
             }
@@ -1880,6 +2283,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<ListDedicatedVmHostShapesResponse>(responseMessage);
             }
@@ -1921,6 +2325,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<ListDedicatedVmHostsResponse>(responseMessage);
             }
@@ -1958,6 +2363,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<ListImageShapeCompatibilityEntriesResponse>(responseMessage);
             }
@@ -2002,6 +2408,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<ListImagesResponse>(responseMessage);
             }
@@ -2042,6 +2449,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<ListInstanceConsoleConnectionsResponse>(responseMessage);
             }
@@ -2079,6 +2487,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<ListInstanceDevicesResponse>(responseMessage);
             }
@@ -2119,6 +2528,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<ListInstancesResponse>(responseMessage);
             }
@@ -2158,6 +2568,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<ListShapesResponse>(responseMessage);
             }
@@ -2198,6 +2609,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<ListVnicAttachmentsResponse>(responseMessage);
             }
@@ -2240,6 +2652,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<ListVolumeAttachmentsResponse>(responseMessage);
             }
@@ -2277,6 +2690,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<RemoveImageShapeCompatibilityEntryResponse>(responseMessage);
             }
@@ -2322,12 +2736,52 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<TerminateInstanceResponse>(responseMessage);
             }
             catch (Exception e)
             {
                 logger.Error($"TerminateInstance failed with error: {e.Message}");
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Updates the specified Compute Image Capability Schema
+        /// 
+        /// </summary>
+        /// <param name="request">The request object containing the details to send. Required.</param>
+        /// <param name="retryConfiguration">The retry configuration that will be used by to send this request. Optional.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel this operation. Optional.</param>
+        /// <returns>A response object containing details about the completed operation</returns>
+        public async Task<UpdateComputeImageCapabilitySchemaResponse> UpdateComputeImageCapabilitySchema(UpdateComputeImageCapabilitySchemaRequest request, RetryConfiguration retryConfiguration = null, CancellationToken cancellationToken = default)
+        {
+            logger.Trace("Called updateComputeImageCapabilitySchema");
+            Uri uri = new Uri(this.restClient.GetEndpoint(), System.IO.Path.Combine(basePathWithoutHost, "/computeImageCapabilitySchemas/{computeImageCapabilitySchemaId}".Trim('/')));
+            HttpMethod method = new HttpMethod("Put");
+            HttpRequestMessage requestMessage = Converter.ToHttpRequestMessage(uri, method, request);
+            requestMessage.Headers.Add("Accept", "application/json");
+            GenericRetrier retryingClient = Retrier.GetPreferredRetrier(retryConfiguration, this.retryConfiguration);
+            HttpResponseMessage responseMessage;
+
+            try
+            {
+                if (retryingClient != null)
+                {
+                    responseMessage = await retryingClient.MakeRetryingCall(this.restClient.HttpSend, requestMessage, cancellationToken);
+                }
+                else
+                {
+                    responseMessage = await this.restClient.HttpSend(requestMessage);
+                }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
+
+                return Converter.FromHttpResponseMessage<UpdateComputeImageCapabilitySchemaResponse>(responseMessage);
+            }
+            catch (Exception e)
+            {
+                logger.Error($"UpdateComputeImageCapabilitySchema failed with error: {e.Message}");
                 throw;
             }
         }
@@ -2359,6 +2813,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<UpdateConsoleHistoryResponse>(responseMessage);
             }
@@ -2398,6 +2853,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<UpdateDedicatedVmHostResponse>(responseMessage);
             }
@@ -2435,6 +2891,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<UpdateImageResponse>(responseMessage);
             }
@@ -2479,6 +2936,7 @@ namespace Oci.CoreService
                 {
                     responseMessage = await this.restClient.HttpSend(requestMessage);
                 }
+                this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
                 return Converter.FromHttpResponseMessage<UpdateInstanceResponse>(responseMessage);
             }

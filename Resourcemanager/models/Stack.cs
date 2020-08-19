@@ -49,14 +49,16 @@ namespace Oci.ResourcemanagerService.Models
 
         /// <value>
         /// The date and time at which the stack was created.
+        /// Format is defined by RFC3339.
+        /// Example: 2020-01-25T21:10:29.600Z
         /// </value>
         [JsonProperty(PropertyName = "timeCreated")]
         public System.Nullable<System.DateTime> TimeCreated { get; set; }
         ///
         /// <value>
         /// The current lifecycle state of the stack.
-        /// For more information about resource states in Resource Manager, see
-        /// [Key Concepts](https://docs.cloud.oracle.com/iaas/Content/ResourceManager/Concepts/resourcemanager.htm#concepts).
+        /// For more information about stack lifecycle states in Resource Manager, see
+        /// [Key Concepts](https://docs.cloud.oracle.com/iaas/Content/ResourceManager/Concepts/resourcemanager.htm#StackStates).
         /// 
         /// </value>
         ///
@@ -68,13 +70,15 @@ namespace Oci.ResourcemanagerService.Models
             [EnumMember(Value = "DELETING")]
             Deleting,
             [EnumMember(Value = "DELETED")]
-            Deleted
+            Deleted,
+            [EnumMember(Value = "FAILED")]
+            Failed
         };
 
         /// <value>
         /// The current lifecycle state of the stack.
-        /// For more information about resource states in Resource Manager, see
-        /// [Key Concepts](https://docs.cloud.oracle.com/iaas/Content/ResourceManager/Concepts/resourcemanager.htm#concepts).
+        /// For more information about stack lifecycle states in Resource Manager, see
+        /// [Key Concepts](https://docs.cloud.oracle.com/iaas/Content/ResourceManager/Concepts/resourcemanager.htm#StackStates).
         /// 
         /// </value>
         [JsonProperty(PropertyName = "lifecycleState")]
@@ -86,7 +90,7 @@ namespace Oci.ResourcemanagerService.Models
 
         /// <value>
         /// Terraform variables associated with this resource.
-        /// Maximum number of variables supported is 100.
+        /// Maximum number of variables supported is 250.
         /// The maximum size of each variable, including both name and value, is 4096 bytes.
         /// Example: {&quot;CompartmentId&quot;: &quot;compartment-id-value&quot;}
         /// </value>
@@ -124,7 +128,8 @@ namespace Oci.ResourcemanagerService.Models
         public System.Nullable<StackDriftStatusEnum> StackDriftStatus { get; set; }
 
         /// <value>
-        /// Date and time when the drift detection was last executed. Format is defined by RFC3339.
+        /// The date and time when the drift detection was last executed.
+        /// Format is defined by RFC3339.
         /// Example: 2020-01-25T21:10:29.600Z
         /// </value>
         [JsonProperty(PropertyName = "timeDriftLastChecked")]

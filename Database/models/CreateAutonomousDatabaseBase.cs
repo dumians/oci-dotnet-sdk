@@ -60,6 +60,7 @@ namespace Oci.DatabaseService.Models
         /// <br/>
         /// - OLTP - indicates an Autonomous Transaction Processing database
         /// - DW - indicates an Autonomous Data Warehouse database
+        /// - AJD - indicates an Autonomous JSON Database
         /// 
         /// </value>
         ///
@@ -67,7 +68,9 @@ namespace Oci.DatabaseService.Models
             [EnumMember(Value = "OLTP")]
             Oltp,
             [EnumMember(Value = "DW")]
-            Dw
+            Dw,
+            [EnumMember(Value = "AJD")]
+            Ajd
         };
 
         /// <value>
@@ -75,6 +78,7 @@ namespace Oci.DatabaseService.Models
         /// <br/>
         /// - OLTP - indicates an Autonomous Transaction Processing database
         /// - DW - indicates an Autonomous Data Warehouse database
+        /// - AJD - indicates an Autonomous JSON Database
         /// 
         /// </value>
         [JsonProperty(PropertyName = "dbWorkload")]
@@ -172,6 +176,12 @@ namespace Oci.DatabaseService.Models
         /// </value>
         [JsonProperty(PropertyName = "whitelistedIps")]
         public System.Collections.Generic.List<string> WhitelistedIps { get; set; }
+
+        /// <value>
+        /// Indicates whether the Autonomous Database has Data Guard enabled.
+        /// </value>
+        [JsonProperty(PropertyName = "isDataGuardEnabled")]
+        public System.Nullable<bool> IsDataGuardEnabled { get; set; }
 
         /// <value>
         /// The [OCID](https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the subnet the resource is associated with.

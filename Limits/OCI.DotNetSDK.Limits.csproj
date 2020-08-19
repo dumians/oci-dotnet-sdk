@@ -9,7 +9,7 @@
     <Authors>Oracle Cloud Infrastructure</Authors>
     <Company>Oracle</Company>
     <PackageTags>Oracle;OCI;Cloud;oci-sdk;OracleCloudInfrastructure;Limits</PackageTags>
-    <Description>Oracle Cloud Infrastructure Limits Service</Description>
+    <Description>Oracle Cloud Infrastructure Limits Service provides the ability to query limits and quotas for a given resource or set of resources in a compartment.</Description>
     <PackageProjectUrl>https://docs.cloud.oracle.com/en-us/iaas/Content/API/SDKDocs/dotnetsdk.htm</PackageProjectUrl>
     <Product>Oracle Cloud Infrastructure SDK for .NET</Product>
   </PropertyGroup>

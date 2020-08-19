@@ -91,21 +91,25 @@ namespace Oci.ResourcemanagerService.Models
         public string ResolvedPlanJobId { get; set; }
 
         /// <value>
-        /// The date and time at which the job was created.
+        /// The date and time when the job was created.
+        /// Format is defined by RFC3339.
+        /// Example: 2020-01-25T21:10:29.600Z
         /// </value>
         [JsonProperty(PropertyName = "timeCreated")]
         public System.Nullable<System.DateTime> TimeCreated { get; set; }
 
         /// <value>
-        /// The date and time at which the job stopped running, irrespective of whether the job ran successfully.
+        /// The date and time when the job stopped running, irrespective of whether the job ran successfully.
+        /// Format is defined by RFC3339.
+        /// Example: 2020-01-25T21:10:29.600Z
         /// </value>
         [JsonProperty(PropertyName = "timeFinished")]
         public System.Nullable<System.DateTime> TimeFinished { get; set; }
         ///
         /// <value>
         /// Current state of the specified job.
-        /// For more information about resource states in Resource Manager, see
-        /// [Key Concepts](https://docs.cloud.oracle.com/iaas/Content/ResourceManager/Concepts/resourcemanager.htm#concepts).
+        /// For more information about job lifecycle states in Resource Manager, see
+        /// [Key Concepts](https://docs.cloud.oracle.com/iaas/Content/ResourceManager/Concepts/resourcemanager.htm#JobStates).
         /// 
         /// </value>
         ///
@@ -126,8 +130,8 @@ namespace Oci.ResourcemanagerService.Models
 
         /// <value>
         /// Current state of the specified job.
-        /// For more information about resource states in Resource Manager, see
-        /// [Key Concepts](https://docs.cloud.oracle.com/iaas/Content/ResourceManager/Concepts/resourcemanager.htm#concepts).
+        /// For more information about job lifecycle states in Resource Manager, see
+        /// [Key Concepts](https://docs.cloud.oracle.com/iaas/Content/ResourceManager/Concepts/resourcemanager.htm#JobStates).
         /// 
         /// </value>
         [JsonProperty(PropertyName = "lifecycleState")]
@@ -138,19 +142,25 @@ namespace Oci.ResourcemanagerService.Models
         public FailureDetails FailureDetails { get; set; }
 
         /// <value>
-        /// The file path to the directory within the configuration from which the job runs.
+        /// File path to the directory from which Terraform runs.
+        /// If not specified, the root directory is used.
+        /// This parameter is ignored for the `configSourceType` value of `COMPARTMENT_CONFIG_SOURCE`.
+        /// 
         /// </value>
         [JsonProperty(PropertyName = "workingDirectory")]
         public string WorkingDirectory { get; set; }
 
         /// <value>
         /// Terraform variables associated with this resource.
-        /// Maximum number of variables supported is 100.
+        /// Maximum number of variables supported is 250.
         /// The maximum size of each variable, including both name and value, is 4096 bytes.
         /// Example: {&quot;CompartmentId&quot;: &quot;compartment-id-value&quot;}
         /// </value>
         [JsonProperty(PropertyName = "variables")]
         public System.Collections.Generic.Dictionary<string, string> Variables { get; set; }
+
+        [JsonProperty(PropertyName = "configSource")]
+        public ConfigSourceRecord ConfigSource { get; set; }
 
         /// <value>
         /// Free-form tags associated with this resource. Each tag is a key-value pair with no predefined name, type, or namespace.

@@ -16,21 +16,22 @@ using Newtonsoft.Json.Converters;
 namespace Oci.CoreService.Models
 {
     /// <summary>
-    /// Options for tuning compatibility and performance of VM shapes.
+    /// Options for tuning the compatibility and performance of VM shapes. The values that you specify override any
+    /// default values.
     /// 
     /// </summary>
     public class LaunchOptions 
     {
                 ///
         /// <value>
-        /// Emulation type for volume.
+        /// Emulation type for the boot volume.
         /// * `ISCSI` - ISCSI attached block storage device.
         /// * `SCSI` - Emulated SCSI disk.
         /// * `IDE` - Emulated IDE disk.
-        /// * `VFIO` - Direct attached Virtual Function storage.  This is the default option for Local data
-        /// volumes on Oracle provided images.
-        /// * `PARAVIRTUALIZED` - Paravirtualized disk. This is the default for Boot Volumes and Remote Block
-        /// Storage volumes on Oracle provided images.
+        /// * `VFIO` - Direct attached Virtual Function storage.  This is the default option for local data
+        /// volumes on Oracle-provided images.
+        /// * `PARAVIRTUALIZED` - Paravirtualized disk. This is the default for boot volumes and remote block
+        /// storage volumes on Oracle-provided images.
         /// 
         /// </value>
         ///
@@ -48,14 +49,14 @@ namespace Oci.CoreService.Models
         };
 
         /// <value>
-        /// Emulation type for volume.
+        /// Emulation type for the boot volume.
         /// * `ISCSI` - ISCSI attached block storage device.
         /// * `SCSI` - Emulated SCSI disk.
         /// * `IDE` - Emulated IDE disk.
-        /// * `VFIO` - Direct attached Virtual Function storage.  This is the default option for Local data
-        /// volumes on Oracle provided images.
-        /// * `PARAVIRTUALIZED` - Paravirtualized disk. This is the default for Boot Volumes and Remote Block
-        /// Storage volumes on Oracle provided images.
+        /// * `VFIO` - Direct attached Virtual Function storage.  This is the default option for local data
+        /// volumes on Oracle-provided images.
+        /// * `PARAVIRTUALIZED` - Paravirtualized disk. This is the default for boot volumes and remote block
+        /// storage volumes on Oracle-provided images.
         /// 
         /// </value>
         [JsonProperty(PropertyName = "bootVolumeType")]
@@ -67,7 +68,7 @@ namespace Oci.CoreService.Models
         /// * `BIOS` - Boot VM using BIOS style firmware.  This is compatible with both 32 bit and 64 bit operating
         /// systems that boot using MBR style bootloaders.
         /// * `UEFI_64` - Boot VM using UEFI style firmware compatible with 64 bit operating systems.  This is the
-        /// default for Oracle provided images.
+        /// default for Oracle-provided images.
         /// 
         /// </value>
         ///
@@ -83,7 +84,7 @@ namespace Oci.CoreService.Models
         /// * `BIOS` - Boot VM using BIOS style firmware.  This is compatible with both 32 bit and 64 bit operating
         /// systems that boot using MBR style bootloaders.
         /// * `UEFI_64` - Boot VM using UEFI style firmware compatible with 64 bit operating systems.  This is the
-        /// default for Oracle provided images.
+        /// default for Oracle-provided images.
         /// 
         /// </value>
         [JsonProperty(PropertyName = "firmware")]
@@ -95,7 +96,7 @@ namespace Oci.CoreService.Models
         /// * `E1000` - Emulated Gigabit ethernet controller.  Compatible with Linux e1000 network driver.
         /// * `VFIO` - Direct attached Virtual Function network controller. This is the networking type
         /// when you launch an instance using hardware-assisted (SR-IOV) networking.
-        /// * `PARAVIRTUALIZED` - VM instances launch with paravirtualized devices using virtio drivers.
+        /// * `PARAVIRTUALIZED` - VM instances launch with paravirtualized devices using VirtIO drivers.
         /// 
         /// </value>
         ///
@@ -113,7 +114,7 @@ namespace Oci.CoreService.Models
         /// * `E1000` - Emulated Gigabit ethernet controller.  Compatible with Linux e1000 network driver.
         /// * `VFIO` - Direct attached Virtual Function network controller. This is the networking type
         /// when you launch an instance using hardware-assisted (SR-IOV) networking.
-        /// * `PARAVIRTUALIZED` - VM instances launch with paravirtualized devices using virtio drivers.
+        /// * `PARAVIRTUALIZED` - VM instances launch with paravirtualized devices using VirtIO drivers.
         /// 
         /// </value>
         [JsonProperty(PropertyName = "networkType")]
@@ -125,10 +126,10 @@ namespace Oci.CoreService.Models
         /// * `ISCSI` - ISCSI attached block storage device.
         /// * `SCSI` - Emulated SCSI disk.
         /// * `IDE` - Emulated IDE disk.
-        /// * `VFIO` - Direct attached Virtual Function storage.  This is the default option for Local data
-        /// volumes on Oracle provided images.
-        /// * `PARAVIRTUALIZED` - Paravirtualized disk.This is the default for Boot Volumes and Remote Block
-        /// Storage volumes on Oracle provided images.
+        /// * `VFIO` - Direct attached Virtual Function storage.  This is the default option for local data
+        /// volumes on Oracle-provided images.
+        /// * `PARAVIRTUALIZED` - Paravirtualized disk. This is the default for boot volumes and remote block
+        /// storage volumes on Oracle-provided images.
         /// 
         /// </value>
         ///
@@ -150,10 +151,10 @@ namespace Oci.CoreService.Models
         /// * `ISCSI` - ISCSI attached block storage device.
         /// * `SCSI` - Emulated SCSI disk.
         /// * `IDE` - Emulated IDE disk.
-        /// * `VFIO` - Direct attached Virtual Function storage.  This is the default option for Local data
-        /// volumes on Oracle provided images.
-        /// * `PARAVIRTUALIZED` - Paravirtualized disk.This is the default for Boot Volumes and Remote Block
-        /// Storage volumes on Oracle provided images.
+        /// * `VFIO` - Direct attached Virtual Function storage.  This is the default option for local data
+        /// volumes on Oracle-provided images.
+        /// * `PARAVIRTUALIZED` - Paravirtualized disk. This is the default for boot volumes and remote block
+        /// storage volumes on Oracle-provided images.
         /// 
         /// </value>
         [JsonProperty(PropertyName = "remoteDataVolumeType")]
@@ -161,7 +162,9 @@ namespace Oci.CoreService.Models
         public System.Nullable<RemoteDataVolumeTypeEnum> RemoteDataVolumeType { get; set; }
 
         /// <value>
-        /// Whether to enable in-transit encryption for the boot volume's paravirtualized attachment. The default value is false.
+        /// Deprecated. Instead use `isPvEncryptionInTransitEnabled` in
+        /// {@link #launchInstanceDetails(LaunchInstanceDetailsRequest) launchInstanceDetails}.
+        /// 
         /// </value>
         [JsonProperty(PropertyName = "isPvEncryptionInTransitEnabled")]
         public System.Nullable<bool> IsPvEncryptionInTransitEnabled { get; set; }

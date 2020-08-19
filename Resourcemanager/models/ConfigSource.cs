@@ -30,7 +30,11 @@ namespace Oci.ResourcemanagerService.Models
         ///
         public enum ConfigSourceTypeEnum {
             [EnumMember(Value = "ZIP_UPLOAD")]
-            ZipUpload
+            ZipUpload,
+            [EnumMember(Value = "GIT_CONFIG_SOURCE")]
+            GitConfigSource,
+            [EnumMember(Value = "COMPARTMENT_CONFIG_SOURCE")]
+            CompartmentConfigSource
         };
 
         /// <value>
@@ -48,6 +52,7 @@ namespace Oci.ResourcemanagerService.Models
         /// <value>
         /// File path to the directory to use for running Terraform.
         /// If not specified, the root directory is used.
+        /// This parameter is ignored for the `configSourceType` value of `COMPARTMENT_CONFIG_SOURCE`.
         /// 
         /// </value>
         [JsonProperty(PropertyName = "workingDirectory")]
@@ -74,6 +79,12 @@ namespace Oci.ResourcemanagerService.Models
             var discriminator = jsonObject["configSourceType"].Value<string>();
             switch (discriminator)
             {
+                case "GIT_CONFIG_SOURCE":
+                    obj = new GitConfigSource();
+                    break;
+                case "COMPARTMENT_CONFIG_SOURCE":
+                    obj = new CompartmentConfigSource();
+                    break;
                 case "ZIP_UPLOAD":
                     obj = new ZipUploadConfigSource();
                     break;
