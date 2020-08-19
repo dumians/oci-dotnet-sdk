@@ -75,7 +75,7 @@ namespace Oci.AnnouncementsService
         public async Task<GetAnnouncementResponse> GetAnnouncement(GetAnnouncementRequest request, RetryConfiguration retryConfiguration = null, CancellationToken cancellationToken = default)
         {
             logger.Trace("Called getAnnouncement");
-            Uri uri = new Uri(this.restClient.GetEndpoint(), System.IO.Path.Combine(basePathWithoutHost, "/announcements/{announcementId}".Trim('/')));
+            Uri uri = new Uri(restClient.GetEndpoint(), System.IO.Path.Combine(basePathWithoutHost, "/announcements/{announcementId}".Trim('/')));
             HttpMethod method = new HttpMethod("Get");
             HttpRequestMessage requestMessage = Converter.ToHttpRequestMessage(uri, method, request);
             requestMessage.Headers.Add("Accept", "application/json");

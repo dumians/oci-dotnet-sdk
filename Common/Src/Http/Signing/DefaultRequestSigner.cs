@@ -79,7 +79,7 @@ namespace Oci.Common.Http.Signing
                 requestMessage.Content = new StringContent("");
                 requestMessage.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 requestMessage.Content.Headers.TryAddWithoutValidation(Constants.CONTENT_LENGTH, "0");
-                requestMessage.Content.Headers.TryAddWithoutValidation(Constants.X_CONTENT_SHA256, Convert.ToBase64String(SHA256.Create().ComputeHash(new byte[0])));
+                requestMessage.Content.Headers.TryAddWithoutValidation(Constants.X_CONTENT_SHA256, Convert.ToBase64String(SHA256.Create().ComputeHash(Array.Empty<byte>())));
             }
 
             // Few requests accept Constants.OPTIONAL_HEADERS_NAMES headers. In such cases, if the request contains any of the optional headers,

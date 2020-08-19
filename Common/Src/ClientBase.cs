@@ -82,8 +82,9 @@ namespace Oci.Common
             // User agent string will only be configured once and cannot be modified after that.
             if (userAgent == null)
             {
-                var additionalUserAgent = String.IsNullOrEmpty(clientUserAgent) ? "" : $" {clientUserAgent}";
+                var additionalUserAgent = string.IsNullOrEmpty(clientUserAgent) ? "" : $" {clientUserAgent}";
                 OperatingSystem os = Environment.OSVersion;
+                //TODO : create variable from string
                 userAgent = $"Oracle-DotNetSDK/{Version.GetVersion()} ({os.Platform}/{os.Version}; {RuntimeInformation.FrameworkDescription}{additionalUserAgent})";
             }
             return userAgent;

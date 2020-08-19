@@ -1,8 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\General.targets" />
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <LangVersion>8.0</LangVersion>
     <PackageId>OCI.DotNetSDK.Dts</PackageId>
     <RootNamespace>Oci.DtsService</RootNamespace>
@@ -10,8 +10,11 @@
     <Company>Oracle</Company>
     <PackageTags>Oracle;OCI;Cloud;oci-sdk;OracleCloudInfrastructure;DataTransferService;Dts</PackageTags>
     <Description>Data Transfer helps you easily and securely migrate your data in an offline manner to Oracle Cloud Infrastructure.</Description>
+    <PackageProjectUrl>https://docs.cloud.oracle.com/en-us/iaas/Content/API/SDKDocs/dotnetsdk.htm</PackageProjectUrl>
+    <Copyright>Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved</Copyright>
+    <Product>Oracle Cloud Infrastructure SDK for .NET</Product>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\OCI.DotNetSDK.Common.csproj"/>
+    <ProjectReference Include="..\Common\OCI.DotNetSDK.Common.csproj" />
   </ItemGroup>
 </Project>

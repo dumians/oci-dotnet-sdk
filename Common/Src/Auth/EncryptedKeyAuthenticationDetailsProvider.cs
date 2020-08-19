@@ -52,7 +52,7 @@ namespace Oci.Common.Auth
                     var headerValue = headerDict["DEK-Info"];
                     var dekInfo = headerValue.Split(',');
                     var tokens = dekInfo[0].Split('-');
-                    if (!tokens[tokens.Length - 1].Equals("CBC"))
+                    if (!tokens[^1].Equals("CBC"))
                     {
                         throw new InvalidDataException("Only CBC chaining mode is supported and it is secure");
                     }

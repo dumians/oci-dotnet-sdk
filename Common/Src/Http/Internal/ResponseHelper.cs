@@ -77,7 +77,7 @@ namespace Oci.Common.Http.Internal
             response.Content.Headers.TryGetValues("Content-Type", out var values);
             if (values != null && values.FirstOrDefault().Contains("text/plain"))
             {
-                return (T)(Object)content;
+                return (T)(object)content;
             }
             try
             {

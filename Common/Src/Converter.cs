@@ -31,8 +31,10 @@ namespace Oci.Common
         {
             // Update properties of requests if needed
 
-            var requestMessage = new HttpRequestMessage();
-            requestMessage.Method = method;
+            var requestMessage = new HttpRequestMessage
+            {
+                Method = method
+            };
             var updatedUri = uri.AbsoluteUri;
             // Build queries string.
             var queries = new Dictionary<string, string>();
@@ -46,8 +48,7 @@ namespace Oci.Common
                 object[] attrs = prop.GetCustomAttributes(false);
                 foreach (var attr in attrs)
                 {
-                    HttpConverterAttribute httpRequestAttr = attr as HttpConverterAttribute;
-                    if (httpRequestAttr != null)
+                    if (attr is HttpConverterAttribute httpRequestAttr)
                     {
                         if (httpRequestAttr.Target == TargetEnum.Query)
                         {
@@ -87,8 +88,10 @@ namespace Oci.Common
                     }
                 }
             }
-            var uriBuilder = new UriBuilder(updatedUri);
-            uriBuilder.Query = HttpUtils.BuildQueryString(queries);
+            var uriBuilder = new UriBuilder(updatedUri)
+            {
+                Query = HttpUtils.BuildQueryString(queries)
+            };
             requestMessage.RequestUri = uriBuilder.Uri;
             return requestMessage;
         }
@@ -105,8 +108,7 @@ namespace Oci.Common
                 object[] attrs = prop.GetCustomAttributes(false);
                 foreach (var attr in attrs)
                 {
-                    HttpConverterAttribute httpResponseAttr = attr as HttpConverterAttribute;
-                    if (httpResponseAttr == null)
+                    if (!(attr is HttpConverterAttribute httpResponseAttr))
                     {
                         continue;
                     }

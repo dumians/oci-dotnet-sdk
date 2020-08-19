@@ -27,12 +27,14 @@ namespace Oci.Common.Http
 
         public RestClient(RestClientHandler handler, ClientConfiguration clientConfiguration)
         {
-            this.httpClient = new HttpClient(handler);
-            this.httpClient.Timeout = TimeSpan.FromMilliseconds(clientConfiguration.TimeoutMillis);
-            this.httpClient.MaxResponseContentBufferSize = clientConfiguration.ResponseContentBufferBytes;
+            this.httpClient = new HttpClient(handler)
+            {
+                Timeout = TimeSpan.FromMilliseconds(clientConfiguration.TimeoutMillis),
+                MaxResponseContentBufferSize = clientConfiguration.ResponseContentBufferBytes
+            };
         }
 
-        public RestClient() : this(null as RestClientHandler) { }
+        public RestClient() : this(null) { }
 
         /// <summary>Disposes the HTTP client</summary>
         public void Dispose()
@@ -43,16 +45,17 @@ namespace Oci.Common.Http
             }
         }
 
-        /// <summary>Sets the base address for the HTTP client.</summary>
+        /// <summary>Sets the base address for the HTTPS client.</summary>
         /// <param name="endpoint">The service endpoint.</param>
         public void SetEndpoint(string endpoint)
         {
             logger.Debug($"Setting endpoint to: {endpoint}");
+            //TODO: Ensure HTTPS 
             this.httpClient.BaseAddress = new Uri(endpoint);
         }
 
         /// <summary>Retrieves the endpoint Uri.</summary>
-        /// <returns>The base address of the HTTP client.</returns>
+        /// <returns>The base address of the HTTPS client.</returns>
         public Uri GetEndpoint()
         {
             return this.httpClient.BaseAddress;

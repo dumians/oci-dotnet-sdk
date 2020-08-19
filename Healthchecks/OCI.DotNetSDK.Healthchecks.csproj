@@ -1,8 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\General.targets" />
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <LangVersion>8.0</LangVersion>
     <PackageId>OCI.DotNetSDK.Healthchecks</PackageId>
     <RootNamespace>Oci.HealthchecksService</RootNamespace>
@@ -10,8 +10,10 @@
     <Company>Oracle</Company>
     <PackageTags>Oracle;OCI;Cloud;oci-sdk;OracleCloudInfrastructure;Healthchecks</PackageTags>
     <Description>The Healthchecks service helps you monitor the health of your endpoints.</Description>
+    <PackageProjectUrl>https://docs.cloud.oracle.com/en-us/iaas/Content/API/SDKDocs/dotnetsdk.htm</PackageProjectUrl>
+    <Product>Oracle Cloud Infrastructure SDK for .NET</Product>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\OCI.DotNetSDK.Common.csproj"/>
+    <ProjectReference Include="..\Common\OCI.DotNetSDK.Common.csproj" />
   </ItemGroup>
 </Project>

@@ -51,7 +51,7 @@ namespace Oci.Common
             var service = new Service { ServiceName = serviceName, ServiceEndpointPrefix = serviceEndpointPrefix, ServiceEndpointTemplate = serviceEndpointTemplate };
             if (!SERVICE_CACHE.ContainsKey(serviceName))
             {
-                logger.Info($"Registering new service: {service.ToString()}");
+                logger.Info($"Registering new service: {service}");
                 SERVICE_CACHE.Add(serviceName, service);
                 return service;
             }
