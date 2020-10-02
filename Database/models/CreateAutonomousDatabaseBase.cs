@@ -106,10 +106,6 @@ namespace Oci.DatabaseService.Models
         /// <value>
         /// The password must be between 12 and 30 characters long, and must contain at least 1 uppercase, 1 lowercase, and 1 numeric character. It cannot contain the double quote symbol (\") or the username \"admin\", regardless of casing.
         /// </value>
-        /// <remarks>
-        /// Required
-        /// </remarks>
-        [Required(ErrorMessage = "AdminPassword is required.")]
         [JsonProperty(PropertyName = "adminPassword")]
         public string AdminPassword { get; set; }
 
@@ -149,7 +145,7 @@ namespace Oci.DatabaseService.Models
         public System.Nullable<bool> IsPreviewVersionWithServiceTermsAccepted { get; set; }
 
         /// <value>
-        /// Indicates if auto scaling is enabled for the Autonomous Database OCPU core count. The default value is `FALSE`. Note that auto scaling is available for databases on [shared Exadata infrastructure](https://docs.cloud.oracle.com/Content/Database/Concepts/adboverview.htm#AEI) only.
+        /// Indicates if auto scaling is enabled for the Autonomous Database OCPU core count. The default value is `FALSE`.
         /// 
         /// </value>
         [JsonProperty(PropertyName = "isAutoScalingEnabled")]
@@ -171,7 +167,9 @@ namespace Oci.DatabaseService.Models
         /// <value>
         /// The client IP access control list (ACL). This feature is available for databases on [shared Exadata infrastructure](https://docs.cloud.oracle.com/Content/Database/Concepts/adboverview.htm#AEI) only.
         /// Only clients connecting from an IP address included in the ACL may access the Autonomous Database instance. This is an array of CIDR (Classless Inter-Domain Routing) notations for a subnet or VCN OCID.
+        /// <br/>
         /// To add the whitelist VCN specific subnet or IP, use a semicoln ';' as a deliminator to add the VCN specific subnets or IPs.
+        /// For update operation, if you wish to delete all the existing whitelisted IP\u2019s, use an array with a single empty string entry.
         /// Example: [&quot;1.1.1.1&quot;,&quot;1.1.1.0/24&quot;,&quot;ocid1.vcn.oc1.sea.aaaaaaaard2hfx2nn3e5xeo6j6o62jga44xjizkw&quot;,&quot;ocid1.vcn.oc1.sea.aaaaaaaard2hfx2nn3e5xeo6j6o62jga44xjizkw;1.1.1.1&quot;,&quot;ocid1.vcn.oc1.sea.aaaaaaaard2hfx2nn3e5xeo6j6o62jga44xjizkw;1.1.0.0/16&quot;]
         /// </value>
         [JsonProperty(PropertyName = "whitelistedIps")]
@@ -252,7 +250,9 @@ namespace Oci.DatabaseService.Models
             [EnumMember(Value = "BACKUP_FROM_ID")]
             BackupFromId,
             [EnumMember(Value = "BACKUP_FROM_TIMESTAMP")]
-            BackupFromTimestamp
+            BackupFromTimestamp,
+            [EnumMember(Value = "CLONE_TO_REFRESHABLE")]
+            CloneToRefreshable
         };
 
         /// <value>
@@ -288,6 +288,9 @@ namespace Oci.DatabaseService.Models
             {
                 case "DATABASE":
                     obj = new CreateAutonomousDatabaseCloneDetails();
+                    break;
+                case "CLONE_TO_REFRESHABLE":
+                    obj = new CreateRefreshableAutonomousDatabaseCloneDetails();
                     break;
                 case "BACKUP_FROM_ID":
                     obj = new CreateAutonomousDatabaseFromBackupDetails();

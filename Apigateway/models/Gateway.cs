@@ -35,7 +35,7 @@ namespace Oci.ApigatewayService.Models
         public string Id { get; set; }
 
         /// <value>
-        /// A user-friendly name. Does not have to be unique, and it's changeable. 
+        /// A user-friendly name. Does not have to be unique, and it's changeable.
         /// Avoid entering confidential information.
         /// <br/>
         /// Example: My new resource
@@ -56,7 +56,10 @@ namespace Oci.ApigatewayService.Models
         public string CompartmentId { get; set; }
         ///
         /// <value>
-        /// Gateway endpoint type.
+        /// Gateway endpoint type. `PUBLIC` will have a public ip address assigned to it, while `PRIVATE` will only be
+        /// accessible on a private IP address on the subnet.
+        /// <br/>
+        /// Example: PUBLIC or PRIVATE
         /// </value>
         ///
         public enum EndpointTypeEnum {
@@ -67,7 +70,10 @@ namespace Oci.ApigatewayService.Models
         };
 
         /// <value>
-        /// Gateway endpoint type.
+        /// Gateway endpoint type. `PUBLIC` will have a public ip address assigned to it, while `PRIVATE` will only be
+        /// accessible on a private IP address on the subnet.
+        /// <br/>
+        /// Example: PUBLIC or PRIVATE
         /// </value>
         /// <remarks>
         /// Required
@@ -137,6 +143,19 @@ namespace Oci.ApigatewayService.Models
         /// </value>
         [JsonProperty(PropertyName = "hostname")]
         public string Hostname { get; set; }
+
+        /// <value>
+        /// The [OCID](https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the resource.
+        /// 
+        /// </value>
+        [JsonProperty(PropertyName = "certificateId")]
+        public string CertificateId { get; set; }
+
+        /// <value>
+        /// An array of IP addresses associated with the gateway.
+        /// </value>
+        [JsonProperty(PropertyName = "ipAddresses")]
+        public System.Collections.Generic.List<IpAddress> IpAddresses { get; set; }
 
         /// <value>
         /// Free-form tags for this resource. Each tag is a simple key-value pair

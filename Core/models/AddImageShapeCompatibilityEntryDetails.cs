@@ -21,6 +21,9 @@ namespace Oci.CoreService.Models
     public class AddImageShapeCompatibilityEntryDetails 
     {
         
+        [JsonProperty(PropertyName = "memoryConstraints")]
+        public ImageMemoryConstraints MemoryConstraints { get; set; }
+
         [JsonProperty(PropertyName = "ocpuConstraints")]
         public ImageOcpuConstraints OcpuConstraints { get; set; }
     }

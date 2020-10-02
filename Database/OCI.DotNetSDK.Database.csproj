@@ -8,7 +8,7 @@
     <RootNamespace>Oci.DatabaseService</RootNamespace>
     <Authors>Oracle Cloud Infrastructure</Authors>
     <Company>Oracle</Company>
-    <PackageTags>Oracle;OCI;Cloud;oci-sdk;OracleCloudInfrastructure;Database</PackageTags>
+    <PackageTags>Oracle;OCI;Oracle Cloud;OracleCloud;oci-sdk;OracleCloudInfrastructure;Database</PackageTags>
     <Description>The Database service helps you provision and manage Oracle databases.</Description>
     <PackageProjectUrl>https://docs.cloud.oracle.com/en-us/iaas/Content/API/SDKDocs/dotnetsdk.htm</PackageProjectUrl>
     <RepositoryUrl>https://github.com/oracle/oci-dotnet-sdk</RepositoryUrl>

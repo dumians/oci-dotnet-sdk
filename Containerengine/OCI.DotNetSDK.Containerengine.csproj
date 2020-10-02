@@ -8,8 +8,8 @@
     <RootNamespace>Oci.ContainerengineService</RootNamespace>
     <Authors>Oracle Cloud Infrastructure</Authors>
     <Company>Oracle</Company>
-    <PackageTags>Oracle;OCI;Cloud;oci-sdk;OracleCloudInfrastructure;Containerengine</PackageTags>
-    <Description>Container Engine for Kubernetes is a fully-managed, scalable, and highly available service that you can use to deploy your containerized applications to the cloud.</Description>
+    <PackageTags>Oracle;OCI;Oracle Cloud;OracleCloud;oci-sdk;OracleCloudInfrastructure;Containerengine</PackageTags>
+    <Description>Container Engine for Kubernetes helps you define and create Kubernetes clusters to enable the deployment, scaling, and management of containerized applications.</Description>
     <Product>Oracle Cloud Infrastructure SDK for .NET</Product>
     <RepositoryUrl>https://github.com/oracle/oci-dotnet-sdk</RepositoryUrl>
     <RepositoryType>git</RepositoryType>

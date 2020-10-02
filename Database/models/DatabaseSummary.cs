@@ -186,5 +186,17 @@ namespace Oci.DatabaseService.Models
         /// </value>
         [JsonProperty(PropertyName = "connectionStrings")]
         public DatabaseConnectionStrings ConnectionStrings { get; set; }
+
+        /// <value>
+        /// Point in time recovery timeStamp of the source database at which cloned database system is cloned from the source database system, as described in [RFC 3339](https://tools.ietf.org/rfc/rfc3339)
+        /// </value>
+        [JsonProperty(PropertyName = "sourceDatabasePointInTimeRecoveryTimestamp")]
+        public System.Nullable<System.DateTime> SourceDatabasePointInTimeRecoveryTimestamp { get; set; }
+
+        /// <value>
+        /// The database software image [OCID](https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm)
+        /// </value>
+        [JsonProperty(PropertyName = "databaseSoftwareImageId")]
+        public string DatabaseSoftwareImageId { get; set; }
     }
 }

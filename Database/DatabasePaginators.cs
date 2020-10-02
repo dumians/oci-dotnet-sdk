@@ -69,7 +69,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListAutonomousContainerDatabases(request, retryConfiguration, cancellationToken).Result
+                request => client.ListAutonomousContainerDatabases(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -93,7 +93,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListAutonomousContainerDatabases(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListAutonomousContainerDatabases(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -118,7 +118,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListAutonomousDataWarehouseBackups(request, retryConfiguration, cancellationToken).Result
+                request => client.ListAutonomousDataWarehouseBackups(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -142,7 +142,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListAutonomousDataWarehouseBackups(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListAutonomousDataWarehouseBackups(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -167,7 +167,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListAutonomousDataWarehouses(request, retryConfiguration, cancellationToken).Result
+                request => client.ListAutonomousDataWarehouses(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -191,7 +191,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListAutonomousDataWarehouses(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListAutonomousDataWarehouses(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -216,7 +216,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListAutonomousDatabaseBackups(request, retryConfiguration, cancellationToken).Result
+                request => client.ListAutonomousDatabaseBackups(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -240,7 +240,56 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListAutonomousDatabaseBackups(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListAutonomousDatabaseBackups(request, retryConfiguration, cancellationToken),
+                response => response.Items
+            );
+        }
+
+        /// <summary>
+        /// Creates a new enumerable which will iterate over the responses received from the ListAutonomousDatabaseClones operation. This enumerable
+        /// will fetch more data from the server as needed.
+        /// </summary>
+        /// <param name="request">The request object containing the details to send</param>
+        /// <param name="retryConfiguration">The configuration for retrying, may be null</param>
+        /// <param name="cancellationToken">The cancellation token object</param>
+        /// <returns>The enumerator, which supports a simple iteration over a collection of a specified type</returns>
+        public IEnumerable<ListAutonomousDatabaseClonesResponse> ListAutonomousDatabaseClonesResponseEnumerator(ListAutonomousDatabaseClonesRequest request, Common.Retry.RetryConfiguration retryConfiguration = null, CancellationToken cancellationToken = default)
+        {
+            return new Common.Utils.ResponseEnumerable<ListAutonomousDatabaseClonesRequest, ListAutonomousDatabaseClonesResponse>(
+                response => response.OpcNextPage,
+                input =>
+                {
+                    if (!string.IsNullOrEmpty(input))
+                    {
+                        request.Page = input;
+                    }
+                    return request;
+                },
+                request => client.ListAutonomousDatabaseClones(request, retryConfiguration, cancellationToken)
+            );
+        }
+
+        /// <summary>
+        /// Creates a new enumerable which will iterate over the AutonomousDatabaseSummary objects
+        /// contained in responses from the ListAutonomousDatabaseClones operation. This enumerable will fetch more data from the server as needed.
+        /// </summary>
+        /// <param name="request">The request object containing the details to send</param>
+        /// <param name="retryConfiguration">The configuration for retrying, may be null</param>
+        /// <param name="cancellationToken">The cancellation token object</param>
+        /// <returns>The enumerator, which supports a simple iteration over a collection of a specified type</returns>
+        public IEnumerable<AutonomousDatabaseSummary> ListAutonomousDatabaseClonesRecordEnumerator(ListAutonomousDatabaseClonesRequest request, Common.Retry.RetryConfiguration retryConfiguration = null, CancellationToken cancellationToken = default)
+        {
+            return new Common.Utils.ResponseRecordEnumerable<ListAutonomousDatabaseClonesRequest, ListAutonomousDatabaseClonesResponse, AutonomousDatabaseSummary>(
+                response => response.OpcNextPage,
+                input =>
+                {
+                    if (!string.IsNullOrEmpty(input))
+                    {
+                        request.Page = input;
+                    }
+                    return request;
+                },
+                request => client.ListAutonomousDatabaseClones(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -265,7 +314,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListAutonomousDatabases(request, retryConfiguration, cancellationToken).Result
+                request => client.ListAutonomousDatabases(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -289,7 +338,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListAutonomousDatabases(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListAutonomousDatabases(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -314,7 +363,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListAutonomousDbPreviewVersions(request, retryConfiguration, cancellationToken).Result
+                request => client.ListAutonomousDbPreviewVersions(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -338,7 +387,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListAutonomousDbPreviewVersions(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListAutonomousDbPreviewVersions(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -363,7 +412,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListAutonomousDbVersions(request, retryConfiguration, cancellationToken).Result
+                request => client.ListAutonomousDbVersions(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -387,7 +436,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListAutonomousDbVersions(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListAutonomousDbVersions(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -412,7 +461,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListAutonomousExadataInfrastructureShapes(request, retryConfiguration, cancellationToken).Result
+                request => client.ListAutonomousExadataInfrastructureShapes(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -436,7 +485,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListAutonomousExadataInfrastructureShapes(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListAutonomousExadataInfrastructureShapes(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -461,7 +510,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListAutonomousExadataInfrastructures(request, retryConfiguration, cancellationToken).Result
+                request => client.ListAutonomousExadataInfrastructures(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -485,7 +534,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListAutonomousExadataInfrastructures(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListAutonomousExadataInfrastructures(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -510,7 +559,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListAutonomousVmClusters(request, retryConfiguration, cancellationToken).Result
+                request => client.ListAutonomousVmClusters(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -534,7 +583,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListAutonomousVmClusters(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListAutonomousVmClusters(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -559,7 +608,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListBackupDestination(request, retryConfiguration, cancellationToken).Result
+                request => client.ListBackupDestination(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -583,7 +632,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListBackupDestination(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListBackupDestination(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -608,7 +657,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListBackups(request, retryConfiguration, cancellationToken).Result
+                request => client.ListBackups(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -632,7 +681,56 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListBackups(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListBackups(request, retryConfiguration, cancellationToken),
+                response => response.Items
+            );
+        }
+
+        /// <summary>
+        /// Creates a new enumerable which will iterate over the responses received from the ListContainerDatabasePatches operation. This enumerable
+        /// will fetch more data from the server as needed.
+        /// </summary>
+        /// <param name="request">The request object containing the details to send</param>
+        /// <param name="retryConfiguration">The configuration for retrying, may be null</param>
+        /// <param name="cancellationToken">The cancellation token object</param>
+        /// <returns>The enumerator, which supports a simple iteration over a collection of a specified type</returns>
+        public IEnumerable<ListContainerDatabasePatchesResponse> ListContainerDatabasePatchesResponseEnumerator(ListContainerDatabasePatchesRequest request, Common.Retry.RetryConfiguration retryConfiguration = null, CancellationToken cancellationToken = default)
+        {
+            return new Common.Utils.ResponseEnumerable<ListContainerDatabasePatchesRequest, ListContainerDatabasePatchesResponse>(
+                response => response.OpcNextPage,
+                input =>
+                {
+                    if (!string.IsNullOrEmpty(input))
+                    {
+                        request.Page = input;
+                    }
+                    return request;
+                },
+                request => client.ListContainerDatabasePatches(request, retryConfiguration, cancellationToken)
+            );
+        }
+
+        /// <summary>
+        /// Creates a new enumerable which will iterate over the AutonomousPatchSummary objects
+        /// contained in responses from the ListContainerDatabasePatches operation. This enumerable will fetch more data from the server as needed.
+        /// </summary>
+        /// <param name="request">The request object containing the details to send</param>
+        /// <param name="retryConfiguration">The configuration for retrying, may be null</param>
+        /// <param name="cancellationToken">The cancellation token object</param>
+        /// <returns>The enumerator, which supports a simple iteration over a collection of a specified type</returns>
+        public IEnumerable<AutonomousPatchSummary> ListContainerDatabasePatchesRecordEnumerator(ListContainerDatabasePatchesRequest request, Common.Retry.RetryConfiguration retryConfiguration = null, CancellationToken cancellationToken = default)
+        {
+            return new Common.Utils.ResponseRecordEnumerable<ListContainerDatabasePatchesRequest, ListContainerDatabasePatchesResponse, AutonomousPatchSummary>(
+                response => response.OpcNextPage,
+                input =>
+                {
+                    if (!string.IsNullOrEmpty(input))
+                    {
+                        request.Page = input;
+                    }
+                    return request;
+                },
+                request => client.ListContainerDatabasePatches(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -657,7 +755,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListDataGuardAssociations(request, retryConfiguration, cancellationToken).Result
+                request => client.ListDataGuardAssociations(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -681,7 +779,56 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListDataGuardAssociations(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListDataGuardAssociations(request, retryConfiguration, cancellationToken),
+                response => response.Items
+            );
+        }
+
+        /// <summary>
+        /// Creates a new enumerable which will iterate over the responses received from the ListDatabaseSoftwareImages operation. This enumerable
+        /// will fetch more data from the server as needed.
+        /// </summary>
+        /// <param name="request">The request object containing the details to send</param>
+        /// <param name="retryConfiguration">The configuration for retrying, may be null</param>
+        /// <param name="cancellationToken">The cancellation token object</param>
+        /// <returns>The enumerator, which supports a simple iteration over a collection of a specified type</returns>
+        public IEnumerable<ListDatabaseSoftwareImagesResponse> ListDatabaseSoftwareImagesResponseEnumerator(ListDatabaseSoftwareImagesRequest request, Common.Retry.RetryConfiguration retryConfiguration = null, CancellationToken cancellationToken = default)
+        {
+            return new Common.Utils.ResponseEnumerable<ListDatabaseSoftwareImagesRequest, ListDatabaseSoftwareImagesResponse>(
+                response => response.OpcNextPage,
+                input =>
+                {
+                    if (!string.IsNullOrEmpty(input))
+                    {
+                        request.Page = input;
+                    }
+                    return request;
+                },
+                request => client.ListDatabaseSoftwareImages(request, retryConfiguration, cancellationToken)
+            );
+        }
+
+        /// <summary>
+        /// Creates a new enumerable which will iterate over the DatabaseSoftwareImageSummary objects
+        /// contained in responses from the ListDatabaseSoftwareImages operation. This enumerable will fetch more data from the server as needed.
+        /// </summary>
+        /// <param name="request">The request object containing the details to send</param>
+        /// <param name="retryConfiguration">The configuration for retrying, may be null</param>
+        /// <param name="cancellationToken">The cancellation token object</param>
+        /// <returns>The enumerator, which supports a simple iteration over a collection of a specified type</returns>
+        public IEnumerable<DatabaseSoftwareImageSummary> ListDatabaseSoftwareImagesRecordEnumerator(ListDatabaseSoftwareImagesRequest request, Common.Retry.RetryConfiguration retryConfiguration = null, CancellationToken cancellationToken = default)
+        {
+            return new Common.Utils.ResponseRecordEnumerable<ListDatabaseSoftwareImagesRequest, ListDatabaseSoftwareImagesResponse, DatabaseSoftwareImageSummary>(
+                response => response.OpcNextPage,
+                input =>
+                {
+                    if (!string.IsNullOrEmpty(input))
+                    {
+                        request.Page = input;
+                    }
+                    return request;
+                },
+                request => client.ListDatabaseSoftwareImages(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -706,7 +853,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListDatabases(request, retryConfiguration, cancellationToken).Result
+                request => client.ListDatabases(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -730,7 +877,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListDatabases(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListDatabases(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -755,7 +902,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListDbHomePatchHistoryEntries(request, retryConfiguration, cancellationToken).Result
+                request => client.ListDbHomePatchHistoryEntries(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -779,7 +926,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListDbHomePatchHistoryEntries(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListDbHomePatchHistoryEntries(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -804,7 +951,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListDbHomePatches(request, retryConfiguration, cancellationToken).Result
+                request => client.ListDbHomePatches(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -828,7 +975,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListDbHomePatches(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListDbHomePatches(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -853,7 +1000,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListDbHomes(request, retryConfiguration, cancellationToken).Result
+                request => client.ListDbHomes(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -877,7 +1024,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListDbHomes(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListDbHomes(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -902,7 +1049,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListDbNodes(request, retryConfiguration, cancellationToken).Result
+                request => client.ListDbNodes(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -926,7 +1073,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListDbNodes(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListDbNodes(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -951,7 +1098,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListDbSystemPatchHistoryEntries(request, retryConfiguration, cancellationToken).Result
+                request => client.ListDbSystemPatchHistoryEntries(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -975,7 +1122,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListDbSystemPatchHistoryEntries(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListDbSystemPatchHistoryEntries(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -1000,7 +1147,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListDbSystemPatches(request, retryConfiguration, cancellationToken).Result
+                request => client.ListDbSystemPatches(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -1024,7 +1171,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListDbSystemPatches(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListDbSystemPatches(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -1049,7 +1196,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListDbSystemShapes(request, retryConfiguration, cancellationToken).Result
+                request => client.ListDbSystemShapes(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -1073,7 +1220,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListDbSystemShapes(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListDbSystemShapes(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -1098,7 +1245,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListDbSystems(request, retryConfiguration, cancellationToken).Result
+                request => client.ListDbSystems(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -1122,7 +1269,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListDbSystems(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListDbSystems(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -1147,7 +1294,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListDbVersions(request, retryConfiguration, cancellationToken).Result
+                request => client.ListDbVersions(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -1171,7 +1318,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListDbVersions(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListDbVersions(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -1196,7 +1343,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListExadataInfrastructures(request, retryConfiguration, cancellationToken).Result
+                request => client.ListExadataInfrastructures(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -1220,7 +1367,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListExadataInfrastructures(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListExadataInfrastructures(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -1245,7 +1392,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListGiVersions(request, retryConfiguration, cancellationToken).Result
+                request => client.ListGiVersions(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -1269,7 +1416,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListGiVersions(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListGiVersions(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -1294,7 +1441,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListMaintenanceRuns(request, retryConfiguration, cancellationToken).Result
+                request => client.ListMaintenanceRuns(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -1318,7 +1465,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListMaintenanceRuns(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListMaintenanceRuns(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -1343,7 +1490,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListVmClusterNetworks(request, retryConfiguration, cancellationToken).Result
+                request => client.ListVmClusterNetworks(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -1367,7 +1514,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListVmClusterNetworks(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListVmClusterNetworks(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -1392,7 +1539,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListVmClusterPatchHistoryEntries(request, retryConfiguration, cancellationToken).Result
+                request => client.ListVmClusterPatchHistoryEntries(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -1416,7 +1563,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListVmClusterPatchHistoryEntries(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListVmClusterPatchHistoryEntries(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -1441,7 +1588,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListVmClusterPatches(request, retryConfiguration, cancellationToken).Result
+                request => client.ListVmClusterPatches(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -1465,7 +1612,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListVmClusterPatches(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListVmClusterPatches(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -1490,7 +1637,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListVmClusters(request, retryConfiguration, cancellationToken).Result
+                request => client.ListVmClusters(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -1514,7 +1661,7 @@ namespace Oci.DatabaseService
                     }
                     return request;
                 },
-                request => client.ListVmClusters(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListVmClusters(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }

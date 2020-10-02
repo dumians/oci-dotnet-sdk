@@ -22,13 +22,20 @@ namespace Oci.ApigatewayService.Models
     {
         
         /// <value>
-        /// A user-friendly name. Does not have to be unique, and it's changeable. 
+        /// A user-friendly name. Does not have to be unique, and it's changeable.
         /// Avoid entering confidential information.
         /// <br/>
         /// Example: My new resource
         /// </value>
         [JsonProperty(PropertyName = "displayName")]
         public string DisplayName { get; set; }
+
+        /// <value>
+        /// The [OCID](https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the resource.
+        /// 
+        /// </value>
+        [JsonProperty(PropertyName = "certificateId")]
+        public string CertificateId { get; set; }
 
         /// <value>
         /// Free-form tags for this resource. Each tag is a simple key-value pair

@@ -56,6 +56,9 @@ namespace Oci.Common
         public static readonly Region UK_GOV_LONDON_1 = Register("uk-gov-london-1", Realm.OC4, "ltn");
         public static readonly Region UK_GOV_CARDIFF_1 = Register("uk-gov-cardiff-1", Realm.OC4, "brs");
 
+        // OC8
+        public static readonly Region AP_CHIYODA_1 = Register("ap-chiyoda-1", Realm.OC8, "nja");
+
         /// <summary>The region identifier as defined in https://docs.cloud.oracle.com/iaas/Content/General/Concepts/regions.htm</summary>
         public string RegionId { get; }
 
@@ -140,6 +143,22 @@ namespace Oci.Common
                 }
             }
             throw new ArgumentException($"Unable to find region from regionId {regionId}.");
+        }
+
+        /// <summary>Returns the Region object from the canonical public region id or region code.</summary>
+        /// <param name="regionCodeOrId">The region id or region code.</param>
+        /// <returns>The region object.</returns>
+        /// <exception>Throws ArgumentException when region id is not found.</exception>
+        public static Region FromRegionCodeOrId(string regionCodeOrId)
+        {
+            foreach (Region region in Values())
+            {
+                if (region.RegionCode.Equals(regionCodeOrId) || region.RegionId.Equals(regionCodeOrId))
+                {
+                    return region;
+                }
+            }
+            throw new ArgumentException($"Unable to find region from regionId or regionCode {regionCodeOrId}.");
         }
 
         /// <summary>

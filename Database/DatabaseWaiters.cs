@@ -66,6 +66,38 @@ namespace Oci.DatabaseService
         /// <param name="request">Request to send.</param>
         /// <param name="statuses">Desired resource states. If multiple states are provided then the waiter will return once the resource reaches any of the provided states</param>
         /// <returns>a new Oci.common.Waiter instance</returns>
+        public Waiter<AutonomousDatabaseManualRefreshRequest, AutonomousDatabaseManualRefreshResponse> ForAutonomousDatabaseManualRefresh(AutonomousDatabaseManualRefreshRequest request, params WorkrequestsService.Models.WorkRequest.StatusEnum[] targetStates)
+        {
+            return this.ForAutonomousDatabaseManualRefresh(request, WaiterConfiguration.DefaultWaiterConfiguration, targetStates);
+        }
+
+        /// <summary>
+        /// Creates a waiter using the provided configuration.
+        /// </summary>
+        /// <param name="request">Request to send.</param>
+        /// <param name="config">Wait Configuration</param>
+        /// <param name="targetStates">Desired resource states. If multiple states are provided then the waiter will return once the resource reaches any of the provided states</param>
+        /// <returns>a new Oci.common.Waiter instance</returns>
+        public Waiter<AutonomousDatabaseManualRefreshRequest, AutonomousDatabaseManualRefreshResponse> ForAutonomousDatabaseManualRefresh(AutonomousDatabaseManualRefreshRequest request, WaiterConfiguration config, params WorkrequestsService.Models.WorkRequest.StatusEnum[] targetStates)
+        {
+            return new Waiter<AutonomousDatabaseManualRefreshRequest, AutonomousDatabaseManualRefreshResponse>(() =>
+            {
+                var response = client.AutonomousDatabaseManualRefresh(request).Result;
+                var getWorkRequestRequest = new Oci.WorkrequestsService.Requests.GetWorkRequestRequest
+                {
+                    WorkRequestId = response.OpcWorkRequestId
+                };
+                workRequestClient.Waiters.ForWorkRequest(getWorkRequestRequest, config, targetStates).Execute();
+                return response;
+            });
+        }
+        
+        /// <summary>
+        /// Creates a waiter using default wait configuration.
+        /// </summary>
+        /// <param name="request">Request to send.</param>
+        /// <param name="statuses">Desired resource states. If multiple states are provided then the waiter will return once the resource reaches any of the provided states</param>
+        /// <returns>a new Oci.common.Waiter instance</returns>
         public Waiter<ChangeAutonomousContainerDatabaseCompartmentRequest, ChangeAutonomousContainerDatabaseCompartmentResponse> ForChangeAutonomousContainerDatabaseCompartment(ChangeAutonomousContainerDatabaseCompartmentRequest request, params WorkrequestsService.Models.WorkRequest.StatusEnum[] targetStates)
         {
             return this.ForChangeAutonomousContainerDatabaseCompartment(request, WaiterConfiguration.DefaultWaiterConfiguration, targetStates);
@@ -211,6 +243,38 @@ namespace Oci.DatabaseService
             return new Waiter<ChangeBackupDestinationCompartmentRequest, ChangeBackupDestinationCompartmentResponse>(() =>
             {
                 var response = client.ChangeBackupDestinationCompartment(request).Result;
+                var getWorkRequestRequest = new Oci.WorkrequestsService.Requests.GetWorkRequestRequest
+                {
+                    WorkRequestId = response.OpcWorkRequestId
+                };
+                workRequestClient.Waiters.ForWorkRequest(getWorkRequestRequest, config, targetStates).Execute();
+                return response;
+            });
+        }
+        
+        /// <summary>
+        /// Creates a waiter using default wait configuration.
+        /// </summary>
+        /// <param name="request">Request to send.</param>
+        /// <param name="statuses">Desired resource states. If multiple states are provided then the waiter will return once the resource reaches any of the provided states</param>
+        /// <returns>a new Oci.common.Waiter instance</returns>
+        public Waiter<ChangeDatabaseSoftwareImageCompartmentRequest, ChangeDatabaseSoftwareImageCompartmentResponse> ForChangeDatabaseSoftwareImageCompartment(ChangeDatabaseSoftwareImageCompartmentRequest request, params WorkrequestsService.Models.WorkRequest.StatusEnum[] targetStates)
+        {
+            return this.ForChangeDatabaseSoftwareImageCompartment(request, WaiterConfiguration.DefaultWaiterConfiguration, targetStates);
+        }
+
+        /// <summary>
+        /// Creates a waiter using the provided configuration.
+        /// </summary>
+        /// <param name="request">Request to send.</param>
+        /// <param name="config">Wait Configuration</param>
+        /// <param name="targetStates">Desired resource states. If multiple states are provided then the waiter will return once the resource reaches any of the provided states</param>
+        /// <returns>a new Oci.common.Waiter instance</returns>
+        public Waiter<ChangeDatabaseSoftwareImageCompartmentRequest, ChangeDatabaseSoftwareImageCompartmentResponse> ForChangeDatabaseSoftwareImageCompartment(ChangeDatabaseSoftwareImageCompartmentRequest request, WaiterConfiguration config, params WorkrequestsService.Models.WorkRequest.StatusEnum[] targetStates)
+        {
+            return new Waiter<ChangeDatabaseSoftwareImageCompartmentRequest, ChangeDatabaseSoftwareImageCompartmentResponse>(() =>
+            {
+                var response = client.ChangeDatabaseSoftwareImageCompartment(request).Result;
                 var getWorkRequestRequest = new Oci.WorkrequestsService.Requests.GetWorkRequestRequest
                 {
                     WorkRequestId = response.OpcWorkRequestId
@@ -578,6 +642,38 @@ namespace Oci.DatabaseService
         /// <param name="request">Request to send.</param>
         /// <param name="statuses">Desired resource states. If multiple states are provided then the waiter will return once the resource reaches any of the provided states</param>
         /// <returns>a new Oci.common.Waiter instance</returns>
+        public Waiter<CreateDatabaseSoftwareImageRequest, CreateDatabaseSoftwareImageResponse> ForCreateDatabaseSoftwareImage(CreateDatabaseSoftwareImageRequest request, params WorkrequestsService.Models.WorkRequest.StatusEnum[] targetStates)
+        {
+            return this.ForCreateDatabaseSoftwareImage(request, WaiterConfiguration.DefaultWaiterConfiguration, targetStates);
+        }
+
+        /// <summary>
+        /// Creates a waiter using the provided configuration.
+        /// </summary>
+        /// <param name="request">Request to send.</param>
+        /// <param name="config">Wait Configuration</param>
+        /// <param name="targetStates">Desired resource states. If multiple states are provided then the waiter will return once the resource reaches any of the provided states</param>
+        /// <returns>a new Oci.common.Waiter instance</returns>
+        public Waiter<CreateDatabaseSoftwareImageRequest, CreateDatabaseSoftwareImageResponse> ForCreateDatabaseSoftwareImage(CreateDatabaseSoftwareImageRequest request, WaiterConfiguration config, params WorkrequestsService.Models.WorkRequest.StatusEnum[] targetStates)
+        {
+            return new Waiter<CreateDatabaseSoftwareImageRequest, CreateDatabaseSoftwareImageResponse>(() =>
+            {
+                var response = client.CreateDatabaseSoftwareImage(request).Result;
+                var getWorkRequestRequest = new Oci.WorkrequestsService.Requests.GetWorkRequestRequest
+                {
+                    WorkRequestId = response.OpcWorkRequestId
+                };
+                workRequestClient.Waiters.ForWorkRequest(getWorkRequestRequest, config, targetStates).Execute();
+                return response;
+            });
+        }
+        
+        /// <summary>
+        /// Creates a waiter using default wait configuration.
+        /// </summary>
+        /// <param name="request">Request to send.</param>
+        /// <param name="statuses">Desired resource states. If multiple states are provided then the waiter will return once the resource reaches any of the provided states</param>
+        /// <returns>a new Oci.common.Waiter instance</returns>
         public Waiter<CreateDbHomeRequest, CreateDbHomeResponse> ForCreateDbHome(CreateDbHomeRequest request, params WorkrequestsService.Models.WorkRequest.StatusEnum[] targetStates)
         {
             return this.ForCreateDbHome(request, WaiterConfiguration.DefaultWaiterConfiguration, targetStates);
@@ -883,6 +979,38 @@ namespace Oci.DatabaseService
             return new Waiter<DeleteDatabaseRequest, DeleteDatabaseResponse>(() =>
             {
                 var response = client.DeleteDatabase(request).Result;
+                var getWorkRequestRequest = new Oci.WorkrequestsService.Requests.GetWorkRequestRequest
+                {
+                    WorkRequestId = response.OpcWorkRequestId
+                };
+                workRequestClient.Waiters.ForWorkRequest(getWorkRequestRequest, config, targetStates).Execute();
+                return response;
+            });
+        }
+        
+        /// <summary>
+        /// Creates a waiter using default wait configuration.
+        /// </summary>
+        /// <param name="request">Request to send.</param>
+        /// <param name="statuses">Desired resource states. If multiple states are provided then the waiter will return once the resource reaches any of the provided states</param>
+        /// <returns>a new Oci.common.Waiter instance</returns>
+        public Waiter<DeleteDatabaseSoftwareImageRequest, DeleteDatabaseSoftwareImageResponse> ForDeleteDatabaseSoftwareImage(DeleteDatabaseSoftwareImageRequest request, params WorkrequestsService.Models.WorkRequest.StatusEnum[] targetStates)
+        {
+            return this.ForDeleteDatabaseSoftwareImage(request, WaiterConfiguration.DefaultWaiterConfiguration, targetStates);
+        }
+
+        /// <summary>
+        /// Creates a waiter using the provided configuration.
+        /// </summary>
+        /// <param name="request">Request to send.</param>
+        /// <param name="config">Wait Configuration</param>
+        /// <param name="targetStates">Desired resource states. If multiple states are provided then the waiter will return once the resource reaches any of the provided states</param>
+        /// <returns>a new Oci.common.Waiter instance</returns>
+        public Waiter<DeleteDatabaseSoftwareImageRequest, DeleteDatabaseSoftwareImageResponse> ForDeleteDatabaseSoftwareImage(DeleteDatabaseSoftwareImageRequest request, WaiterConfiguration config, params WorkrequestsService.Models.WorkRequest.StatusEnum[] targetStates)
+        {
+            return new Waiter<DeleteDatabaseSoftwareImageRequest, DeleteDatabaseSoftwareImageResponse>(() =>
+            {
+                var response = client.DeleteDatabaseSoftwareImage(request).Result;
                 var getWorkRequestRequest = new Oci.WorkrequestsService.Requests.GetWorkRequestRequest
                 {
                     WorkRequestId = response.OpcWorkRequestId
@@ -1317,6 +1445,33 @@ namespace Oci.DatabaseService
         /// <param name="request">Request to send.</param>
         /// <param name="targetStates">Desired resource states. If multiple states are provided then the waiter will return once the resource reaches any of the provided states</param>
         /// <returns>a new Oci.common.Waiter instance</returns>
+        public Waiter<GetAutonomousPatchRequest, GetAutonomousPatchResponse> ForAutonomousPatch(GetAutonomousPatchRequest request, params AutonomousPatch.LifecycleStateEnum[] targetStates)
+        {
+            return this.ForAutonomousPatch(request, WaiterConfiguration.DefaultWaiterConfiguration, targetStates);
+        }
+
+        /// <summary>
+        /// Creates a waiter using the provided configuration.
+        /// </summary>
+        /// <param name="request">Request to send.</param>
+        /// <param name="config">Wait Configuration</param>
+        /// <param name="targetStates">Desired resource states. If multiple states are provided then the waiter will return once the resource reaches any of the provided states</param>
+        /// <returns>a new Oci.common.Waiter instance</returns>
+        public Waiter<GetAutonomousPatchRequest, GetAutonomousPatchResponse> ForAutonomousPatch(GetAutonomousPatchRequest request, WaiterConfiguration config, params AutonomousPatch.LifecycleStateEnum[] targetStates)
+        {
+            var agent = new WaiterAgent<GetAutonomousPatchRequest, GetAutonomousPatchResponse>(
+                request,
+                request => client.GetAutonomousPatch(request),
+                response => targetStates.Contains(response.AutonomousPatch.LifecycleState.Value)
+            );
+            return new Waiter<GetAutonomousPatchRequest, GetAutonomousPatchResponse>(config, agent);
+        }
+        /// <summary>
+        /// Creates a waiter using default wait configuration.
+        /// </summary>
+        /// <param name="request">Request to send.</param>
+        /// <param name="targetStates">Desired resource states. If multiple states are provided then the waiter will return once the resource reaches any of the provided states</param>
+        /// <returns>a new Oci.common.Waiter instance</returns>
         public Waiter<GetAutonomousVmClusterRequest, GetAutonomousVmClusterResponse> ForAutonomousVmCluster(GetAutonomousVmClusterRequest request, params AutonomousVmCluster.LifecycleStateEnum[] targetStates)
         {
             return this.ForAutonomousVmCluster(request, WaiterConfiguration.DefaultWaiterConfiguration, targetStates);
@@ -1478,6 +1633,34 @@ namespace Oci.DatabaseService
                 targetStates.Contains(Database.LifecycleStateEnum.Terminated)
             );
             return new Waiter<GetDatabaseRequest, GetDatabaseResponse>(config, agent);
+        }
+        /// <summary>
+        /// Creates a waiter using default wait configuration.
+        /// </summary>
+        /// <param name="request">Request to send.</param>
+        /// <param name="targetStates">Desired resource states. If multiple states are provided then the waiter will return once the resource reaches any of the provided states</param>
+        /// <returns>a new Oci.common.Waiter instance</returns>
+        public Waiter<GetDatabaseSoftwareImageRequest, GetDatabaseSoftwareImageResponse> ForDatabaseSoftwareImage(GetDatabaseSoftwareImageRequest request, params DatabaseSoftwareImage.LifecycleStateEnum[] targetStates)
+        {
+            return this.ForDatabaseSoftwareImage(request, WaiterConfiguration.DefaultWaiterConfiguration, targetStates);
+        }
+
+        /// <summary>
+        /// Creates a waiter using the provided configuration.
+        /// </summary>
+        /// <param name="request">Request to send.</param>
+        /// <param name="config">Wait Configuration</param>
+        /// <param name="targetStates">Desired resource states. If multiple states are provided then the waiter will return once the resource reaches any of the provided states</param>
+        /// <returns>a new Oci.common.Waiter instance</returns>
+        public Waiter<GetDatabaseSoftwareImageRequest, GetDatabaseSoftwareImageResponse> ForDatabaseSoftwareImage(GetDatabaseSoftwareImageRequest request, WaiterConfiguration config, params DatabaseSoftwareImage.LifecycleStateEnum[] targetStates)
+        {
+            var agent = new WaiterAgent<GetDatabaseSoftwareImageRequest, GetDatabaseSoftwareImageResponse>(
+                request,
+                request => client.GetDatabaseSoftwareImage(request),
+                response => targetStates.Contains(response.DatabaseSoftwareImage.LifecycleState.Value),
+                targetStates.Contains(DatabaseSoftwareImage.LifecycleStateEnum.Deleted)
+            );
+            return new Waiter<GetDatabaseSoftwareImageRequest, GetDatabaseSoftwareImageResponse>(config, agent);
         }
         /// <summary>
         /// Creates a waiter using default wait configuration.

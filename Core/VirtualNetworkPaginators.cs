@@ -50,6 +50,104 @@ namespace Oci.CoreService
         }
 
         /// <summary>
+        /// Creates a new enumerable which will iterate over the responses received from the ListByoipAllocatedRanges operation. This enumerable
+        /// will fetch more data from the server as needed.
+        /// </summary>
+        /// <param name="request">The request object containing the details to send</param>
+        /// <param name="retryConfiguration">The configuration for retrying, may be null</param>
+        /// <param name="cancellationToken">The cancellation token object</param>
+        /// <returns>The enumerator, which supports a simple iteration over a collection of a specified type</returns>
+        public IEnumerable<ListByoipAllocatedRangesResponse> ListByoipAllocatedRangesResponseEnumerator(ListByoipAllocatedRangesRequest request, Common.Retry.RetryConfiguration retryConfiguration = null, CancellationToken cancellationToken = default)
+        {
+            return new Common.Utils.ResponseEnumerable<ListByoipAllocatedRangesRequest, ListByoipAllocatedRangesResponse>(
+                response => response.OpcNextPage,
+                input =>
+                {
+                    if (!string.IsNullOrEmpty(input))
+                    {
+                        request.Page = input;
+                    }
+                    return request;
+                },
+                request => client.ListByoipAllocatedRanges(request, retryConfiguration, cancellationToken)
+            );
+        }
+
+        /// <summary>
+        /// Creates a new enumerable which will iterate over the ByoipAllocatedRangeSummary objects
+        /// contained in responses from the ListByoipAllocatedRanges operation. This enumerable will fetch more data from the server as needed.
+        /// </summary>
+        /// <param name="request">The request object containing the details to send</param>
+        /// <param name="retryConfiguration">The configuration for retrying, may be null</param>
+        /// <param name="cancellationToken">The cancellation token object</param>
+        /// <returns>The enumerator, which supports a simple iteration over a collection of a specified type</returns>
+        public IEnumerable<ByoipAllocatedRangeSummary> ListByoipAllocatedRangesRecordEnumerator(ListByoipAllocatedRangesRequest request, Common.Retry.RetryConfiguration retryConfiguration = null, CancellationToken cancellationToken = default)
+        {
+            return new Common.Utils.ResponseRecordEnumerable<ListByoipAllocatedRangesRequest, ListByoipAllocatedRangesResponse, ByoipAllocatedRangeSummary>(
+                response => response.OpcNextPage,
+                input =>
+                {
+                    if (!string.IsNullOrEmpty(input))
+                    {
+                        request.Page = input;
+                    }
+                    return request;
+                },
+                request => client.ListByoipAllocatedRanges(request, retryConfiguration, cancellationToken),
+                response => response.ByoipAllocatedRangeCollection.Items
+            );
+        }
+
+        /// <summary>
+        /// Creates a new enumerable which will iterate over the responses received from the ListByoipRanges operation. This enumerable
+        /// will fetch more data from the server as needed.
+        /// </summary>
+        /// <param name="request">The request object containing the details to send</param>
+        /// <param name="retryConfiguration">The configuration for retrying, may be null</param>
+        /// <param name="cancellationToken">The cancellation token object</param>
+        /// <returns>The enumerator, which supports a simple iteration over a collection of a specified type</returns>
+        public IEnumerable<ListByoipRangesResponse> ListByoipRangesResponseEnumerator(ListByoipRangesRequest request, Common.Retry.RetryConfiguration retryConfiguration = null, CancellationToken cancellationToken = default)
+        {
+            return new Common.Utils.ResponseEnumerable<ListByoipRangesRequest, ListByoipRangesResponse>(
+                response => response.OpcNextPage,
+                input =>
+                {
+                    if (!string.IsNullOrEmpty(input))
+                    {
+                        request.Page = input;
+                    }
+                    return request;
+                },
+                request => client.ListByoipRanges(request, retryConfiguration, cancellationToken)
+            );
+        }
+
+        /// <summary>
+        /// Creates a new enumerable which will iterate over the ByoipRangeSummary objects
+        /// contained in responses from the ListByoipRanges operation. This enumerable will fetch more data from the server as needed.
+        /// </summary>
+        /// <param name="request">The request object containing the details to send</param>
+        /// <param name="retryConfiguration">The configuration for retrying, may be null</param>
+        /// <param name="cancellationToken">The cancellation token object</param>
+        /// <returns>The enumerator, which supports a simple iteration over a collection of a specified type</returns>
+        public IEnumerable<ByoipRangeSummary> ListByoipRangesRecordEnumerator(ListByoipRangesRequest request, Common.Retry.RetryConfiguration retryConfiguration = null, CancellationToken cancellationToken = default)
+        {
+            return new Common.Utils.ResponseRecordEnumerable<ListByoipRangesRequest, ListByoipRangesResponse, ByoipRangeSummary>(
+                response => response.OpcNextPage,
+                input =>
+                {
+                    if (!string.IsNullOrEmpty(input))
+                    {
+                        request.Page = input;
+                    }
+                    return request;
+                },
+                request => client.ListByoipRanges(request, retryConfiguration, cancellationToken),
+                response => response.ByoipRangeCollection.Items
+            );
+        }
+
+        /// <summary>
         /// Creates a new enumerable which will iterate over the responses received from the ListCpeDeviceShapes operation. This enumerable
         /// will fetch more data from the server as needed.
         /// </summary>
@@ -69,7 +167,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListCpeDeviceShapes(request, retryConfiguration, cancellationToken).Result
+                request => client.ListCpeDeviceShapes(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -93,7 +191,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListCpeDeviceShapes(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListCpeDeviceShapes(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -118,7 +216,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListCpes(request, retryConfiguration, cancellationToken).Result
+                request => client.ListCpes(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -142,7 +240,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListCpes(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListCpes(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -167,7 +265,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListCrossConnectGroups(request, retryConfiguration, cancellationToken).Result
+                request => client.ListCrossConnectGroups(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -191,7 +289,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListCrossConnectGroups(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListCrossConnectGroups(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -216,7 +314,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListCrossConnectLocations(request, retryConfiguration, cancellationToken).Result
+                request => client.ListCrossConnectLocations(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -240,7 +338,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListCrossConnectLocations(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListCrossConnectLocations(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -265,7 +363,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListCrossConnects(request, retryConfiguration, cancellationToken).Result
+                request => client.ListCrossConnects(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -289,7 +387,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListCrossConnects(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListCrossConnects(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -314,7 +412,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListCrossconnectPortSpeedShapes(request, retryConfiguration, cancellationToken).Result
+                request => client.ListCrossconnectPortSpeedShapes(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -338,7 +436,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListCrossconnectPortSpeedShapes(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListCrossconnectPortSpeedShapes(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -363,7 +461,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListDhcpOptions(request, retryConfiguration, cancellationToken).Result
+                request => client.ListDhcpOptions(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -387,7 +485,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListDhcpOptions(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListDhcpOptions(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -412,7 +510,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListDrgAttachments(request, retryConfiguration, cancellationToken).Result
+                request => client.ListDrgAttachments(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -436,7 +534,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListDrgAttachments(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListDrgAttachments(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -461,7 +559,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListDrgs(request, retryConfiguration, cancellationToken).Result
+                request => client.ListDrgs(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -485,7 +583,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListDrgs(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListDrgs(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -510,7 +608,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListFastConnectProviderServices(request, retryConfiguration, cancellationToken).Result
+                request => client.ListFastConnectProviderServices(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -534,7 +632,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListFastConnectProviderServices(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListFastConnectProviderServices(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -559,7 +657,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListFastConnectProviderVirtualCircuitBandwidthShapes(request, retryConfiguration, cancellationToken).Result
+                request => client.ListFastConnectProviderVirtualCircuitBandwidthShapes(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -583,7 +681,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListFastConnectProviderVirtualCircuitBandwidthShapes(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListFastConnectProviderVirtualCircuitBandwidthShapes(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -608,7 +706,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListIPSecConnectionTunnels(request, retryConfiguration, cancellationToken).Result
+                request => client.ListIPSecConnectionTunnels(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -632,7 +730,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListIPSecConnectionTunnels(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListIPSecConnectionTunnels(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -657,7 +755,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListIPSecConnections(request, retryConfiguration, cancellationToken).Result
+                request => client.ListIPSecConnections(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -681,7 +779,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListIPSecConnections(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListIPSecConnections(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -706,7 +804,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListInternetGateways(request, retryConfiguration, cancellationToken).Result
+                request => client.ListInternetGateways(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -730,7 +828,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListInternetGateways(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListInternetGateways(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -755,7 +853,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListIpv6s(request, retryConfiguration, cancellationToken).Result
+                request => client.ListIpv6s(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -779,7 +877,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListIpv6s(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListIpv6s(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -804,7 +902,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListLocalPeeringGateways(request, retryConfiguration, cancellationToken).Result
+                request => client.ListLocalPeeringGateways(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -828,7 +926,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListLocalPeeringGateways(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListLocalPeeringGateways(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -853,7 +951,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListNatGateways(request, retryConfiguration, cancellationToken).Result
+                request => client.ListNatGateways(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -877,7 +975,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListNatGateways(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListNatGateways(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -902,7 +1000,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListNetworkSecurityGroupSecurityRules(request, retryConfiguration, cancellationToken).Result
+                request => client.ListNetworkSecurityGroupSecurityRules(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -926,7 +1024,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListNetworkSecurityGroupSecurityRules(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListNetworkSecurityGroupSecurityRules(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -951,7 +1049,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListNetworkSecurityGroupVnics(request, retryConfiguration, cancellationToken).Result
+                request => client.ListNetworkSecurityGroupVnics(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -975,7 +1073,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListNetworkSecurityGroupVnics(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListNetworkSecurityGroupVnics(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -1000,7 +1098,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListNetworkSecurityGroups(request, retryConfiguration, cancellationToken).Result
+                request => client.ListNetworkSecurityGroups(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -1024,7 +1122,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListNetworkSecurityGroups(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListNetworkSecurityGroups(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -1049,7 +1147,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListPrivateIps(request, retryConfiguration, cancellationToken).Result
+                request => client.ListPrivateIps(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -1073,8 +1171,57 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListPrivateIps(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListPrivateIps(request, retryConfiguration, cancellationToken),
                 response => response.Items
+            );
+        }
+
+        /// <summary>
+        /// Creates a new enumerable which will iterate over the responses received from the ListPublicIpPools operation. This enumerable
+        /// will fetch more data from the server as needed.
+        /// </summary>
+        /// <param name="request">The request object containing the details to send</param>
+        /// <param name="retryConfiguration">The configuration for retrying, may be null</param>
+        /// <param name="cancellationToken">The cancellation token object</param>
+        /// <returns>The enumerator, which supports a simple iteration over a collection of a specified type</returns>
+        public IEnumerable<ListPublicIpPoolsResponse> ListPublicIpPoolsResponseEnumerator(ListPublicIpPoolsRequest request, Common.Retry.RetryConfiguration retryConfiguration = null, CancellationToken cancellationToken = default)
+        {
+            return new Common.Utils.ResponseEnumerable<ListPublicIpPoolsRequest, ListPublicIpPoolsResponse>(
+                response => response.OpcNextPage,
+                input =>
+                {
+                    if (!string.IsNullOrEmpty(input))
+                    {
+                        request.Page = input;
+                    }
+                    return request;
+                },
+                request => client.ListPublicIpPools(request, retryConfiguration, cancellationToken)
+            );
+        }
+
+        /// <summary>
+        /// Creates a new enumerable which will iterate over the PublicIpPoolSummary objects
+        /// contained in responses from the ListPublicIpPools operation. This enumerable will fetch more data from the server as needed.
+        /// </summary>
+        /// <param name="request">The request object containing the details to send</param>
+        /// <param name="retryConfiguration">The configuration for retrying, may be null</param>
+        /// <param name="cancellationToken">The cancellation token object</param>
+        /// <returns>The enumerator, which supports a simple iteration over a collection of a specified type</returns>
+        public IEnumerable<PublicIpPoolSummary> ListPublicIpPoolsRecordEnumerator(ListPublicIpPoolsRequest request, Common.Retry.RetryConfiguration retryConfiguration = null, CancellationToken cancellationToken = default)
+        {
+            return new Common.Utils.ResponseRecordEnumerable<ListPublicIpPoolsRequest, ListPublicIpPoolsResponse, PublicIpPoolSummary>(
+                response => response.OpcNextPage,
+                input =>
+                {
+                    if (!string.IsNullOrEmpty(input))
+                    {
+                        request.Page = input;
+                    }
+                    return request;
+                },
+                request => client.ListPublicIpPools(request, retryConfiguration, cancellationToken),
+                response => response.PublicIpPoolCollection.Items
             );
         }
 
@@ -1098,7 +1245,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListPublicIps(request, retryConfiguration, cancellationToken).Result
+                request => client.ListPublicIps(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -1122,7 +1269,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListPublicIps(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListPublicIps(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -1147,7 +1294,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListRemotePeeringConnections(request, retryConfiguration, cancellationToken).Result
+                request => client.ListRemotePeeringConnections(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -1171,7 +1318,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListRemotePeeringConnections(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListRemotePeeringConnections(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -1196,7 +1343,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListRouteTables(request, retryConfiguration, cancellationToken).Result
+                request => client.ListRouteTables(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -1220,7 +1367,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListRouteTables(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListRouteTables(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -1245,7 +1392,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListSecurityLists(request, retryConfiguration, cancellationToken).Result
+                request => client.ListSecurityLists(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -1269,7 +1416,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListSecurityLists(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListSecurityLists(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -1294,7 +1441,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListServiceGateways(request, retryConfiguration, cancellationToken).Result
+                request => client.ListServiceGateways(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -1318,7 +1465,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListServiceGateways(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListServiceGateways(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -1343,7 +1490,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListServices(request, retryConfiguration, cancellationToken).Result
+                request => client.ListServices(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -1367,7 +1514,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListServices(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListServices(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -1392,7 +1539,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListSubnets(request, retryConfiguration, cancellationToken).Result
+                request => client.ListSubnets(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -1416,7 +1563,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListSubnets(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListSubnets(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -1441,7 +1588,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListVcns(request, retryConfiguration, cancellationToken).Result
+                request => client.ListVcns(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -1465,7 +1612,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListVcns(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListVcns(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -1490,7 +1637,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListVirtualCircuitBandwidthShapes(request, retryConfiguration, cancellationToken).Result
+                request => client.ListVirtualCircuitBandwidthShapes(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -1514,7 +1661,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListVirtualCircuitBandwidthShapes(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListVirtualCircuitBandwidthShapes(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -1539,7 +1686,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListVirtualCircuits(request, retryConfiguration, cancellationToken).Result
+                request => client.ListVirtualCircuits(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -1563,7 +1710,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListVirtualCircuits(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListVirtualCircuits(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }
@@ -1588,7 +1735,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListVlans(request, retryConfiguration, cancellationToken).Result
+                request => client.ListVlans(request, retryConfiguration, cancellationToken)
             );
         }
 
@@ -1612,7 +1759,7 @@ namespace Oci.CoreService
                     }
                     return request;
                 },
-                request => client.ListVlans(request, retryConfiguration, cancellationToken).Result,
+                request => client.ListVlans(request, retryConfiguration, cancellationToken),
                 response => response.Items
             );
         }

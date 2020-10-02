@@ -84,11 +84,11 @@ namespace Oci.ResourcesearchService
             {
                 if (retryingClient != null)
                 {
-                    responseMessage = await retryingClient.MakeRetryingCall(this.restClient.HttpSend, requestMessage, cancellationToken);
+                    responseMessage = await retryingClient.MakeRetryingCall(this.restClient.HttpSend, requestMessage, cancellationToken).ConfigureAwait(false);
                 }
                 else
                 {
-                    responseMessage = await this.restClient.HttpSend(requestMessage);
+                    responseMessage = await this.restClient.HttpSend(requestMessage).ConfigureAwait(false);
                 }
                 this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
@@ -123,11 +123,11 @@ namespace Oci.ResourcesearchService
             {
                 if (retryingClient != null)
                 {
-                    responseMessage = await retryingClient.MakeRetryingCall(this.restClient.HttpSend, requestMessage, cancellationToken);
+                    responseMessage = await retryingClient.MakeRetryingCall(this.restClient.HttpSend, requestMessage, cancellationToken).ConfigureAwait(false);
                 }
                 else
                 {
-                    responseMessage = await this.restClient.HttpSend(requestMessage);
+                    responseMessage = await this.restClient.HttpSend(requestMessage).ConfigureAwait(false);
                 }
                 this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
@@ -141,7 +141,7 @@ namespace Oci.ResourcesearchService
         }
 
         /// <summary>
-        /// Queries any and all compartments in the tenancy to find resources that match the specified criteria. 
+        /// Queries any and all compartments in the specified tenancy to find resources that match the specified criteria.
         /// Results include resources that you have permission to view and can span different resource types. 
         /// You can also sort results based on a specified resource attribute.
         /// 
@@ -164,11 +164,11 @@ namespace Oci.ResourcesearchService
             {
                 if (retryingClient != null)
                 {
-                    responseMessage = await retryingClient.MakeRetryingCall(this.restClient.HttpSend, requestMessage, cancellationToken);
+                    responseMessage = await retryingClient.MakeRetryingCall(this.restClient.HttpSend, requestMessage, cancellationToken).ConfigureAwait(false);
                 }
                 else
                 {
-                    responseMessage = await this.restClient.HttpSend(requestMessage);
+                    responseMessage = await this.restClient.HttpSend(requestMessage).ConfigureAwait(false);
                 }
                 this.restClient.CheckHttpResponseMessage(requestMessage, responseMessage);
 
